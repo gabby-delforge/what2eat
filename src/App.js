@@ -1,29 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Button from '@material-ui/core/Button';
+import EventCreator from "./EventCreator";
 
-
-function App() {
+export default function App() {    
+  
   return (
     <div className="App">
-      <Button variant="contained" color="primary"> WOOHOO </Button>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="navbar">Navbar</div>
+      <EventCreator />
     </div>
   );
+
 }
 
-export default App;
+
+
