@@ -1,5 +1,6 @@
 import sqlalchemy
 import random
+
 #
 def createEvent(sess, eventName, eventDateTime, location):
     UID = random.getrandbits(128)
@@ -27,6 +28,7 @@ def addUser(sess, name, eventUID, creator):
 def voteRestaurant(sess, userID, restaurantID):
     sess.execute("DELETE FROM restaurant_votes WHERE user_ID=:UserID", {"UserID":userID})
     sess.add(RestaurantVote(user_ID=userID, restaurantID=restaurantID))
+
 
 def suggestRestaurant(sess, eventID, yelpID):
     sess.add(RestaurantOption(event_id=eventID, yelpID=yelpID))
