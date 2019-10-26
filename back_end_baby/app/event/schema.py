@@ -35,7 +35,7 @@ class TimeVoteSchema(Schema):
 
 #sqlalchemy stuff
 
-from sqlalchemy import Column, Integer, BigInteger, ForeignKey, String, Boolean, DateTime
+from sqlalchemy import Column, Integer, BigInteger, ForeignKey, String, Boolean, DateTime, types
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import sessionmaker
@@ -46,7 +46,7 @@ Base = declarative_base()
 # The Account class corresponds to the "accounts" database table.
 class Event(Base):
     __tablename__ = 'events'
-    id = Column(BigInteger, primary_key=True)
+    id = Column(types.BigInteger, primary_key=True)
     name = Column(String(50))
     location = Column(String(50))
 
@@ -67,7 +67,7 @@ class RestaurantOption(Base):
     __tablename__ = 'restaurant_options'
     id = Column(Integer, primary_key=True)
     event_id = Column(Integer, ForeignKey('events.id'))
-    yelpID = Column(String(50))
+    yelp_id = Column(String(50))
 
     restaurant_votes = relationship("RestaurantVote")
 
