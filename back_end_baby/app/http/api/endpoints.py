@@ -8,7 +8,13 @@ CORS(app)
 
 @app.route("/<int: event_id>/login", methods=["GET"])
 def login():
- return json_response(Kudo(g.user).find_all_kudos())
+    payload = {}
+    userID = Service.getUserID(event_id)
+    payload["user_id"] = userID
+    #expect dictionary as response from getRestaurantVotes
+    user_votes = Service.getRestaurantVotes(event_id, userID)
+    payload["restaurant_votes"] = user_votes
+ return json_response(userID)
 
 
 @app.route("/kudos", methods=["POST"])
