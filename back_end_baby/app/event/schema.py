@@ -1,7 +1,6 @@
 from marshmallow import Schema, fields
 
 # marshmallow stuff
-
 class EventSchema(Schema):
     id = fields.Int(required=True)
     name = fields.Str()

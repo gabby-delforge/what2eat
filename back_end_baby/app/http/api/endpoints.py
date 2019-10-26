@@ -6,9 +6,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/kudos", methods=["GET"])
-@login_required
-def index():
+@app.route("/<int: event_id>/login", methods=["GET"])
+def login():
  return json_response(Kudo(g.user).find_all_kudos())
 
 
