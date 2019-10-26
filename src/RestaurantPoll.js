@@ -17,16 +17,29 @@ import Box from '@material-ui/core/Box';
 import AttachMoneyRoundedIcon from '@material-ui/icons/AttachMoneyRounded';
 import Rating from '@material-ui/lab/Rating';
 import AddLocationIcon from '@material-ui/icons/AddLocation';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import SearchIcon from '@material-ui/icons/Search';
+
 
 export default class RestaurantPoll extends Component {
   constructor(props) {
     super(props);
     this.handleExpandClick = this.handleExpandClick.bind(this);
     this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
+    this.handleOpenForm = this.handleOpenForm.bind(this);
+    this.handleCloseForm = this.handleCloseForm.bind(this);
 
   }
   state = {
-    expanded : false,
+    addFormOpen : false,
     cardData : [
       {
         avi : "https://upload.wikimedia.org/wikipedia/en/thumb/8/85/Panda_Express_logo.svg/1200px-Panda_Express_logo.svg.png",
@@ -74,16 +87,24 @@ export default class RestaurantPoll extends Component {
     let newCards = this.state.cardData.slice();
     let idx = newCards.indexOf(card)
     newCards[idx].open = !newCards[idx].open
+    newCards[idx].selected = !newCards[idx].selected
     this.setState({cardData : newCards})
   }
   handleFavoriteClick(card) {
     let newCards = this.state.cardData.slice();
     let idx = newCards.indexOf(card)
+    let old_val = newCards[idx].selected
     newCards.map((item) => {
       return item.selected = false
     })
-    newCards[idx].selected = !newCards[idx].selected
+    newCards[idx].selected = !old_val
     this.setState({cardData : newCards})
+  }
+  handleOpenForm() {
+    this.setState({addFormOpen : true})
+  }
+  handleCloseForm() {
+    this.setState({addFormOpen : false})
   }
   render() {
 
@@ -145,10 +166,34 @@ export default class RestaurantPoll extends Component {
             </Collapse>
           </Card>
           </Grid>
-
           ))}
-
           </Grid>
+          <br/>
+          <Button variant="outlined" color="secondary" onClick={this.handleOpenForm}>
+                  <AddIcon/>
+                </Button>
+                <Dialog open={this.state.addFormOpen} onClose={this.handleCloseForm} aria-labelledby="form-dialog-title">
+                  <DialogTitle id="form-dialog-title">Add a restaurant to the list!</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText>
+                      To add a restuarant to your group's party please search for the name below:
+                    </DialogContentText>
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Name"
+                      fullWidth
+                    />
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={this.handleCloseForm} color="secondary">
+                      <SearchIcon/>
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+          <br/>
+          <br/>
 
     </div>
   );
