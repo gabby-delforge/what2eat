@@ -8,6 +8,7 @@ export async function login(_username, _eventID) {
   let resp = await response.json();
   return resp
 };
+
 export async function create_event(_eventName, _eventDateTime, _creator, _location) {
   const response = await fetch('example.com/create_event', {
     method: 'POST',
@@ -17,6 +18,7 @@ export async function create_event(_eventName, _eventDateTime, _creator, _locati
   let resp = await response.json();
   return resp
 };
+
 export async function get_restaurant_data(_eventID, _userID) {
   const data = {eventID:_eventID, userID: _userID};
   const response = await fetch(`example.com/search_restaurant?eventID=${encodeURIComponent(data.eventID)}&userID=${encodeURIComponent(data.userID)}`, {
@@ -26,6 +28,7 @@ export async function get_restaurant_data(_eventID, _userID) {
   let resp = await response.json();
   return resp
 };
+
 export async function vote_restaurant(_eventID, _yelpID, _userID) {
   const response = await fetch('example.com/create_event', {
     method: 'POST',

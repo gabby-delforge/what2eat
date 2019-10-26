@@ -61,16 +61,26 @@
 }
 
 .restaurant-card-fav {
-  max-width: 345px;
   border: 4px solid #b7e9ed
 }
 .restaurant-card-reg {
-  max-width: 345px;
   margin: 4px;
 }
 .cardMedia {
   height: 0px;
-  padding-top: 40%;
+  padding-top: 56.25%;
+}
+
+.card-media-small-container {
+  display: flex;
+  height: 200px;
+  margin-bottom: 5px;
+} 
+.card-media-small {
+  width: 100%;
+  margin: 0px 5px;
+  height: 0px;
+  padding-top: 40.25%;
 }
 .bigAvatar {
   margin: 10px;

@@ -42,6 +42,11 @@ export default class RestaurantPoll extends Component {
           "https://upload.wikimedia.org/wikipedia/en/thumb/8/85/Panda_Express_logo.svg/1200px-Panda_Express_logo.svg.png",
         img:
           "https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG",
+        photos: [
+          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
+          "https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_4x3_992.jpg",
+          "http://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2Fa4be5dc2-59ed-11e8-9e86-99299e0f1a1c.jpg?crop=1909%2C1074%2C51%2C399&resize=685"
+        ],
         title: "Panda Express",
         description:
           "Panda Express is a fast food restaurant chain which serves American Chinese cuisine. With over 2,200 locations, it is the largest Asian segment restaurant chain in the United States, where it was founded and is mainly located.",
@@ -57,6 +62,11 @@ export default class RestaurantPoll extends Component {
         avi: "http://www.topdoghotdogs.com/images/logo_black_header.png",
         img:
           "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
+        photos: [
+          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
+          "https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_4x3_992.jpg",
+          "http://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2Fa4be5dc2-59ed-11e8-9e86-99299e0f1a1c.jpg?crop=1909%2C1074%2C51%2C399&resize=685"
+        ],
         title: "Top Dog",
         description: "top dog grew out of a boys love for sausage",
         more_info: "This dog is pretty good.",
@@ -72,6 +82,51 @@ export default class RestaurantPoll extends Component {
           "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/08/rabbits-235417.jpg?h=f699065c&itok=xcSgVx9D",
         img:
           "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c11f34da-1f91-41aa-896f-143beac9258e/d22yhqn-8bb51657-36f9-435d-a25b-29b8c5af1be7.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2MxMWYzNGRhLTFmOTEtNDFhYS04OTZmLTE0M2JlYWM5MjU4ZVwvZDIyeWhxbi04YmI1MTY1Ny0zNmY5LTQzNWQtYTI1Yi0yOWI4YzVhZjFiZTcuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.th_KdgKw84k1rT6_IgFP6GkkOLssLa-4ZyCs4wsrP3Q",
+        photos: [
+          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
+          "https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_4x3_992.jpg",
+          "http://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2Fa4be5dc2-59ed-11e8-9e86-99299e0f1a1c.jpg?crop=1909%2C1074%2C51%2C399&resize=685"
+        ],
+        title: "Bun",
+        description: "bunnies",
+        more_info: "Hare did not win the race.",
+        tags: ["Bunnies", "Very Fast"],
+        open: false,
+        rating: 4,
+        dollar_signs: 4,
+        location: "West Berkeley",
+        selected: false
+      },
+      {
+        avi:
+          "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/08/rabbits-235417.jpg?h=f699065c&itok=xcSgVx9D",
+        img:
+          "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c11f34da-1f91-41aa-896f-143beac9258e/d22yhqn-8bb51657-36f9-435d-a25b-29b8c5af1be7.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2MxMWYzNGRhLTFmOTEtNDFhYS04OTZmLTE0M2JlYWM5MjU4ZVwvZDIyeWhxbi04YmI1MTY1Ny0zNmY5LTQzNWQtYTI1Yi0yOWI4YzVhZjFiZTcuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.th_KdgKw84k1rT6_IgFP6GkkOLssLa-4ZyCs4wsrP3Q",
+        photos: [
+          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
+          "https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_4x3_992.jpg",
+          "http://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2Fa4be5dc2-59ed-11e8-9e86-99299e0f1a1c.jpg?crop=1909%2C1074%2C51%2C399&resize=685"
+        ],
+        title: "Bun",
+        description: "bunnies",
+        more_info: "Hare did not win the race.",
+        tags: ["Bunnies", "Very Fast"],
+        open: false,
+        rating: 4,
+        dollar_signs: 4,
+        location: "West Berkeley",
+        selected: false
+      },
+      {
+        avi:
+          "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/08/rabbits-235417.jpg?h=f699065c&itok=xcSgVx9D",
+        img:
+          "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c11f34da-1f91-41aa-896f-143beac9258e/d22yhqn-8bb51657-36f9-435d-a25b-29b8c5af1be7.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2MxMWYzNGRhLTFmOTEtNDFhYS04OTZmLTE0M2JlYWM5MjU4ZVwvZDIyeWhxbi04YmI1MTY1Ny0zNmY5LTQzNWQtYTI1Yi0yOWI4YzVhZjFiZTcuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.th_KdgKw84k1rT6_IgFP6GkkOLssLa-4ZyCs4wsrP3Q",
+        photos: [
+          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
+          "https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_4x3_992.jpg",
+          "http://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2Fa4be5dc2-59ed-11e8-9e86-99299e0f1a1c.jpg?crop=1909%2C1074%2C51%2C399&resize=685"
+        ],
         title: "Bun",
         description: "bunnies",
         more_info: "Hare did not win the race.",
@@ -113,6 +168,7 @@ export default class RestaurantPoll extends Component {
               }
               avi={card.avi}
               img={card.img}
+              photos={card.photos}
               title={card.title}
               description={card.description}
               more_info={card.more_info}
@@ -183,7 +239,7 @@ class RestaurantCard extends Component {
 
   render() {
     return (
-      <Grid item xs>
+      <Grid item xs={4} sm={6} md={4}>
         <Card className={this.props.className} onClick={this.props.onClick}>
           <CardHeader
             className="card-header"
@@ -201,13 +257,10 @@ class RestaurantCard extends Component {
             className="cardMedia"
           />
           <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {this.props.description}
-            </Typography>
             {this.props.tags.map(tag => (
               <Chip
                 className="restaurantChip"
-                size="small"
+                size="medium"
                 label={" " + tag + " "}
               />
             ))}
@@ -222,8 +275,22 @@ class RestaurantCard extends Component {
             </IconButton>
           </CardActions>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-            <CardContent>
-              <Typography paragraph>{this.props.more_info}</Typography>
+            <CardContent className="card-media-small-container">
+              <CardMedia
+                image={this.props.photos[0]}
+                title="secondary photo"
+                className="card-media-small"
+              />
+              <CardMedia
+                image={this.props.photos[1]}
+                title="secondary photo"
+                className="card-media-small"
+              />
+              <CardMedia
+                image={this.props.photos[2]}
+                title="secondary photo"
+                className="card-media-small"
+              />
             </CardContent>
           </Collapse>
         </Card>
@@ -237,8 +304,13 @@ class CardHeaderAction extends React.Component {
     return (
       <div className="header-action-container">
         <DollarSigns value={this.props.cost} />
-        <div className = "header-separator">|</div>
-        <Rating value={this.props.rating} readOnly size="medium" className="header-stars" />
+        <div className="header-separator">|</div>
+        <Rating
+          value={this.props.rating}
+          readOnly
+          size="medium"
+          className="header-stars"
+        />
       </div>
     );
   }
