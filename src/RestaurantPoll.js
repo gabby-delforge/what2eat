@@ -27,6 +27,11 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import SearchIcon from "@material-ui/icons/Search";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import * as API from "./api/Api";
 
 export default class RestaurantPoll extends Component {
   constructor(props) {
@@ -36,8 +41,11 @@ export default class RestaurantPoll extends Component {
   }
   state = {
     addFormOpen: false,
+    searchResults: [],
+
     cardData: [
       {
+        id: 0,
         avi:
           "https://upload.wikimedia.org/wikipedia/en/thumb/8/85/Panda_Express_logo.svg/1200px-Panda_Express_logo.svg.png",
         img:
@@ -59,6 +67,7 @@ export default class RestaurantPoll extends Component {
         selected: false
       },
       {
+        id: 1,
         avi: "http://www.topdoghotdogs.com/images/logo_black_header.png",
         img:
           "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
@@ -75,66 +84,6 @@ export default class RestaurantPoll extends Component {
         rating: 5,
         dollar_signs: 2,
         location: "Downtown Berkeley",
-        selected: false
-      },
-      {
-        avi:
-          "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/08/rabbits-235417.jpg?h=f699065c&itok=xcSgVx9D",
-        img:
-          "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c11f34da-1f91-41aa-896f-143beac9258e/d22yhqn-8bb51657-36f9-435d-a25b-29b8c5af1be7.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2MxMWYzNGRhLTFmOTEtNDFhYS04OTZmLTE0M2JlYWM5MjU4ZVwvZDIyeWhxbi04YmI1MTY1Ny0zNmY5LTQzNWQtYTI1Yi0yOWI4YzVhZjFiZTcuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.th_KdgKw84k1rT6_IgFP6GkkOLssLa-4ZyCs4wsrP3Q",
-        photos: [
-          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
-          "https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_4x3_992.jpg",
-          "http://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2Fa4be5dc2-59ed-11e8-9e86-99299e0f1a1c.jpg?crop=1909%2C1074%2C51%2C399&resize=685"
-        ],
-        title: "Bun",
-        description: "bunnies",
-        more_info: "Hare did not win the race.",
-        tags: ["Bunnies", "Very Fast"],
-        open: false,
-        rating: 4,
-        dollar_signs: 4,
-        location: "West Berkeley",
-        selected: false
-      },
-      {
-        avi:
-          "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/08/rabbits-235417.jpg?h=f699065c&itok=xcSgVx9D",
-        img:
-          "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c11f34da-1f91-41aa-896f-143beac9258e/d22yhqn-8bb51657-36f9-435d-a25b-29b8c5af1be7.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2MxMWYzNGRhLTFmOTEtNDFhYS04OTZmLTE0M2JlYWM5MjU4ZVwvZDIyeWhxbi04YmI1MTY1Ny0zNmY5LTQzNWQtYTI1Yi0yOWI4YzVhZjFiZTcuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.th_KdgKw84k1rT6_IgFP6GkkOLssLa-4ZyCs4wsrP3Q",
-        photos: [
-          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
-          "https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_4x3_992.jpg",
-          "http://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2Fa4be5dc2-59ed-11e8-9e86-99299e0f1a1c.jpg?crop=1909%2C1074%2C51%2C399&resize=685"
-        ],
-        title: "Bun",
-        description: "bunnies",
-        more_info: "Hare did not win the race.",
-        tags: ["Bunnies", "Very Fast"],
-        open: false,
-        rating: 4,
-        dollar_signs: 4,
-        location: "West Berkeley",
-        selected: false
-      },
-      {
-        avi:
-          "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/08/rabbits-235417.jpg?h=f699065c&itok=xcSgVx9D",
-        img:
-          "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c11f34da-1f91-41aa-896f-143beac9258e/d22yhqn-8bb51657-36f9-435d-a25b-29b8c5af1be7.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2MxMWYzNGRhLTFmOTEtNDFhYS04OTZmLTE0M2JlYWM5MjU4ZVwvZDIyeWhxbi04YmI1MTY1Ny0zNmY5LTQzNWQtYTI1Yi0yOWI4YzVhZjFiZTcuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.th_KdgKw84k1rT6_IgFP6GkkOLssLa-4ZyCs4wsrP3Q",
-        photos: [
-          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
-          "https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_4x3_992.jpg",
-          "http://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2Fa4be5dc2-59ed-11e8-9e86-99299e0f1a1c.jpg?crop=1909%2C1074%2C51%2C399&resize=685"
-        ],
-        title: "Bun",
-        description: "bunnies",
-        more_info: "Hare did not win the race.",
-        tags: ["Bunnies", "Very Fast"],
-        open: false,
-        rating: 4,
-        dollar_signs: 4,
-        location: "West Berkeley",
         selected: false
       }
     ]
@@ -157,7 +106,47 @@ export default class RestaurantPoll extends Component {
   handleCloseForm() {
     this.setState({ addFormOpen: false });
   }
+  handleSearch = () => {
+    let results = API.search_restaurant("Burger King", "Berkeley");
+    let placeholder_results = this.state.cardData;
+    this.setState({ searchResults: placeholder_results });
+  };
+
+  handleAddRestaurant = newRestaurant => {
+    for (let i = 0; i < this.state.cardData.length; i++) {
+      if (this.state.cardData[i].id === newRestaurant.id) {
+        console.log("User tried adding a restaurant that already existed");
+        return;
+      }
+    }
+    let newCardData = this.state.cardData.slice();
+    newCardData.push(newRestaurant);
+    this.setState({ cardData: newCardData });
+  };
   render() {
+    let listSearchResults;
+    if (this.state.searchResults) {
+      listSearchResults = (
+        <List component="nav" aria-label="secondary mailbox folders">
+          {this.state.searchResults.map(result => {
+            return (
+              <ListItem button>
+                <ListItemText primary={result.title} />
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={() => this.handleAddRestaurant(result)}
+                >
+                  <AddIcon />
+                </Button>
+              </ListItem>
+            );
+          })}
+        </List>
+      );
+    } else {
+      listSearchResults = <span />;
+    }
     return (
       <div>
         <Grid container spacing={3} className="restaurant-grid">
@@ -203,16 +192,11 @@ export default class RestaurantPoll extends Component {
               To add a restuarant to your group's party please search for the
               name below:
             </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Name"
-              fullWidth
-            />
+            <TextField autoFocus margin="dense" id="name" fullWidth />
+            {this.state.searchResults ? listSearchResults : <span />}
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleCloseForm} color="secondary">
+            <Button onClick={this.handleSearch} color="secondary">
               <SearchIcon />
             </Button>
           </DialogActions>
