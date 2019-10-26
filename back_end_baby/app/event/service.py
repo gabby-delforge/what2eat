@@ -2,6 +2,7 @@ from sqlalchemy.orm import sessionmaker
 from cockroachdb.sqlalchemy import run_transaction
 import random
 from . import schema
+# import schema
 from sqlalchemy import create_engine
 import datetime
 
@@ -28,7 +29,7 @@ class Service():
     # Creates an event
     def _createEvent(self, sess, id, eventName, eventDateTime, location):
         sess.add(schema.Event(id=id, name=eventName, location=location))
-        sess.add(schema.TimeOption(event_id=uid, timestamp=eventDateTime))
+        sess.add(schema.TimeOption(event_id=id, timestamp=eventDateTime))
 
     def getEvent(self, eventName):
         ret = self.sess.execute("SELECT name FROM events").fetchall()
@@ -77,11 +78,11 @@ class Service():
     #     sess.execute("DELETE FROM restaurant_votes WHERE user_ID=:UserID", {"UserID":userID})
     #     sess.execute("SELECT id FROM restaurant_options WHERE yelp_id=:name AND eventUID:=eventUID")
 
-serviceObj = Service()
-print(serviceObj.sess)
-print("Output of createEvent1: ", serviceObj.createEvent("CalHacks5", datetime.datetime.now(), "Berkeley"))
-print("Output of createEvent2: ",serviceObj.createEvent("CalHacks6", datetime.datetime.now(), "Berkeley"))
-print("Output of getEvent: ", serviceObj.getEvent("CalHacks5"))
+# serviceObj = Service()
+# print(serviceObj.sess)
+# print("Output of createEvent1: ", serviceObj.createEvent("CalHacks5", datetime.datetime.now(), "Berkeley"))
+# print("Output of createEvent2: ",serviceObj.createEvent("CalHacks6", datetime.datetime.now(), "Berkeley"))
+# print("Output of getEvent: ", serviceObj.getEvent("CalHacks5"))
 #
 #
 # #Delete all exisiting votes, then add vote to restaurant_votes

@@ -12,7 +12,7 @@ yelp_api = YelpAPI(API_key)
 def restaurant_data_from_ID(yelp_ID):
     restaurant_data = {}
     yelp_response = yelp_api.business_query(id=yelp_ID)
-    restaurant_data["yelpID"] = yelp_response["yelp_ID"]
+    restaurant_data["yelpID"] = yelp_ID
     restaurant_data["name"] = yelp_response["name"]
     restaurant_data["rating"] = yelp_response["rating"]
     restaurant_data["price"] = len(yelp_response["price"])
@@ -29,5 +29,5 @@ def search(search_string, location_string, num_responses, sort_by='rating'):
     restaurant_data_list = []
     # this could be optimized if we only want one photo per business
     for business in search_response["businesses"]:
-        restaurant_data_list.append(restaurant_data_from_ID(business["id"])
+        restaurant_data_list.append(restaurant_data_from_ID(business["id"]))
     return restaurant_data_list
