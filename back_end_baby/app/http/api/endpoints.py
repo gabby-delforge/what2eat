@@ -25,7 +25,7 @@ def login(event_id):
     #expect dictionary as response from getRestaurantVotes
     user_votes = Service.getRestaurantVotes(event_id, userID)
     payload["restaurant_votes"] = user_votes
- return json_response(userID)
+    return json_response(userID)
 
 
 @app.route("/kudos", methods=["POST"])

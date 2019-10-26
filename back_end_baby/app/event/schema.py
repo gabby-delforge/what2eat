@@ -35,7 +35,7 @@ class TimeVoteSchema(Schema):
 
 #sqlalchemy stuff
 
-from sqlalchemy import Column, Integer, ForeignKey, String, Boolean, DateTime
+from sqlalchemy import Column, Integer, BigInteger, ForeignKey, String, Boolean, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import sessionmaker

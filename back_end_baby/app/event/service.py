@@ -1,8 +1,7 @@
 from sqlalchemy.orm import sessionmaker
 from cockroachdb.sqlalchemy import run_transaction
 import random
-import schema
-from .schema import Base
+from . import schema
 from sqlalchemy import create_engine
 import datetime
 
@@ -17,18 +16,19 @@ class Service():
                                     echo=True                   # Log SQL queries to stdout
                                 )
 
-        Base.metadata.create_all(self.engine)
-        self.sess = sessionmaker(bind=self.engine)
+        schema.Base.metadata.create_all(self.engine)
+        self.Sess = sessionmaker(bind=self.engine)
+        self.sess = self.Sess()
 
     def createEvent(self, eventName, eventDateTime, location):
         UID = random.getrandbits(128)
-        run_transaction(self.sess, lambda s: self._createEvent(UID, eventName, eventDateTime, location))
+        run_transaction(self.Sess, lambda s: self._createEvent(UID, eventName, eventDateTime, location))
         return UID
 
     # Creates an event
-    def _createEvent(self, uid, eventName, eventDateTime, location):
-        self.sess.add(schema.Event(uid=uid, name=eventName, location=location))
-        self.sess.add(schema.TimeOption(event_id=uid, timestamp=eventDateTime))
+    def _createEvent(self, sess, uid, eventName, eventDateTime, location):
+        sess.add(schema.Event(uid=uid, name=eventName, location=location))
+        sess.add(schema.TimeOption(event_id=uid, timestamp=eventDateTime))
 
     def getEvent(self, eventName):
         return self.sess.execute("SELECT * FROM events")
