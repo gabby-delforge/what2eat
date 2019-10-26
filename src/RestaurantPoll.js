@@ -34,6 +34,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import * as API from "./api/Api";
 
 export default class RestaurantPoll extends Component {
+    
   constructor(props) {
     super(props);
     this.handleOpenForm = this.handleOpenForm.bind(this);

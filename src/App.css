@@ -90,6 +90,7 @@
 .restaurantChip{
   margin: 3px;
 }
+
 .MuiCardHeader-title {
   text-align: left;
   margin-bottom: 20px !important;
@@ -139,4 +140,10 @@
 
 .header-separator {
   margin-left: 5px;
+}
+
+.login-container {
+  margin: auto;
+  width: 80%;
+  padding: 5%;
 }
