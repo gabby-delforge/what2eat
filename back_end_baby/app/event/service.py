@@ -71,7 +71,7 @@ class Service():
 
     def _addRestaurant(self, sess, eventID, yelpID):
         sess.add(schema.RestaurantOption(event_id=eventID, yelp_id=yelpID))
-        print("Success")
+        print("Adding restaurant was successful")
 
     def getRestaurantID(self, yelpID, eventID):
         result = self.sess.execute("SELECT id from restaurant_options WHERE yelp_id=:yelpID and event_id=:eventID", {"yelpID": yelpID, "eventID": eventID})
@@ -92,9 +92,6 @@ class Service():
         restaurants = self.sess.query(schema.RestaurantVote).filter(schema.RestaurantVote.id==userID and schema.RestaurantVote)
         run_transaction(self.sessMaker, lambda s: self._deleteExistingRestaurants(s, restaurants))
 
-        self.sess.expungeAll(restaurants)
-        self.sess.add(schema.RestaurantVote())
-
     def _addVote(self, id, userID, optionID):
         self.sess.add(schema.RestaurantVote(id=id, user_id=userID, option_id=optionID))
 
@@ -102,20 +99,25 @@ class Service():
         for restaurant in restaurantOptions:
             sess.expunge(restaurant)
 
-    def datetimeToMs(dt):
+    def datetimeToMs(self, dt):
         epoch = datetime.datetime.utcfromtimestamp(0)
         return (dt - epoch).total_seconds() * 1000.0
 
     def eventInfo(self, eventID):
-        result = self.sess.execute("SELECT events.id, events.name, time_options.timestamp FROM events, time_options WHERE event_id=:eventID and events.id=time_options.event_id ",
+        result = self.sess.execute("SELECT events.name, time_options.timestamp FROM events, time_options WHERE events.id=:eventID and events.id=time_options.event_id ",
                                    {"eventID": eventID}).fetchone()
         if result is None:
             print("Event does not exist")
             return None
-        return result[0], result[1], self.datetimeToMs(result[2])
+        return result[0], int(self.datetimeToMs(result[1]))
+
+    def getResults(self, eventID):
+        #fill
 
 
-# serviceObj = Service()
+serviceObj = Service()
+print("All events", serviceObj.sess.execute("Select id, name from events").fetchall())
+print("Event info:", serviceObj.eventInfo(8441023917761369310))
 # results = serviceObj.sess.query(schema.Event).filter(schema.Event.name=="CalHacks5")
 # print(results)
 # for result in results:
