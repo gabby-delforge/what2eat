@@ -1,8 +1,8 @@
 import sqlalchemy
 import cockroachdb
 import random
-from . import schema
-from .schema import Base
+import schema
+from schema import Base
 from sqlalchemy import create_engine
 
 

@@ -2,12 +2,23 @@ from flask import Flask, json, g, request
 from app.event.service import Service
 from app.event.schema import GithubRepoSchema
 from flask_cors import CORS
+import app.yelp.interface as yelp
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/<int: event_id>/login", methods=["GET"])
-def login():
+
+@app.route("/search_restaurant", methods=["GET"])
+def restaurant_search():
+    search_string = request.args["search_string"]
+    location_string = request.args["location_string"]
+    num_responses=10
+    yelp_responses =  yelp.search(search_string, location_string, num_responses, sort_by='rating')
+    return json_response(yelp_responses)
+
+
+@app.route("/login/<int: event_id>", methods=["POST"])
+def login(event_id):
     payload = {}
     userID = Service.getUserID(event_id)
     payload["user_id"] = userID
