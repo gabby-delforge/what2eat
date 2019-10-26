@@ -3,18 +3,20 @@ import cockroachdb
 import random
 from . import schema
 
-#
+# Creates an event
 def createEvent(sess, eventName, eventDateTime, location):
     UID = random.getrandbits(128)
 
     sess.add(Event(uid=UID, name=eventName, location=location))
+
+    return UID
 
 #Creators added during event page creation, and invitees are added during sign in on shareable link
 def addUser(sess, name, eventUID, creator):
     #Check if user exists
     result = sess.execute("SELECT UID FROM users WHERE name=:name AND eventUID:=eventUID",
                           {"name": name, "eventUID": eventUID})
-
+    print(result)
     #This could be a result != null. Idk what result looks like
     if len(result) == 0:
         #User doesn't exist, so add the user
