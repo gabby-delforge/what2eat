@@ -105,7 +105,7 @@ export default class RestaurantPoll extends Component {
   render() {
     return (
       <div>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} className="restaurant-grid">
           {this.state.cardData.map(card => (
             <RestaurantCard
               className={
@@ -186,17 +186,12 @@ class RestaurantCard extends Component {
       <Grid item xs>
         <Card className={this.props.className} onClick={this.props.onClick}>
           <CardHeader
+            className="card-header"
             action={
-              <div className="headCard">
-                <Rating value={this.props.rating} readOnly />
-                <br />
-                {Array(this.props.dollar_signs).fill(
-                  <AttachMoneyRoundedIcon className="moneyIcon" />
-                )}
-                <br />
-                <AddLocationIcon className="locationIcon" />
-                {" " + this.props.location}
-              </div>
+              <CardHeaderAction
+                rating={this.props.rating}
+                cost={this.props.dollar_signs}
+              />
             }
             title={this.props.title}
           />
@@ -234,5 +229,26 @@ class RestaurantCard extends Component {
         </Card>
       </Grid>
     );
+  }
+}
+
+class CardHeaderAction extends React.Component {
+  render() {
+    return (
+      <div className="header-action-container">
+        <DollarSigns value={this.props.cost} />
+        <div className = "header-separator">|</div>
+        <Rating value={this.props.rating} readOnly size="medium" className="header-stars" />
+      </div>
+    );
+  }
+}
+class DollarSigns extends Component {
+  render() {
+    const dollarSigns = Array(this.props.value).fill(
+      <AttachMoneyRoundedIcon className="money-icon" fontSize="small" />
+    );
+
+    return <div className="dollar-signs">{dollarSigns}</div>;
   }
 }

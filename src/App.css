@@ -55,6 +55,11 @@
 .navbar-text {
   padding: 10px 10px;
 }
+
+.restaurant-grid {
+  margin: 3vm;
+}
+
 .restaurant-card-fav {
   max-width: 345px;
   border: 4px solid #b7e9ed
@@ -65,7 +70,7 @@
 }
 .cardMedia {
   height: 0px;
-  padding-top: 56.25%;
+  padding-top: 40%;
 }
 .bigAvatar {
   margin: 10px;
@@ -77,14 +82,41 @@
 }
 .MuiCardHeader-title {
   text-align: left;
+  margin-bottom: 20px !important;
 }
+
+.MuiCardHeader-action {
+  margin: 0px !important;
+  width: 50% !important;
+}
+
 .headCard {
-  transform: scale(0.8, 0.8);
+  height: 50px;
+}
+
+.header-action-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-stars {
+  transform: scale(0.9, 0.9);
+}
+
+.dollar-signs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
 }
-.moneyIcon{
-  margin: -6px;
+.card-header {
+  padding: 12px !important;
+}
+
+.money-icon{
+  margin:0.5em;
   color: gray;
+  margin: 0px -4px;
 }
 .locationIcon{
   position: relative;
@@ -93,5 +125,8 @@
 }
 .addfab {
   background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)
+}
 
+.header-separator {
+  margin-left: 5px;
 }
