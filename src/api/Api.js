@@ -49,6 +49,16 @@ export async function get_restaurant_results(_eventID) {
   return resp;
 };
 
+export async function get_event_info(_eventID) {
+  const data = {eventID: _eventID}
+  const response = await fetch(`example.com/event_info?eventID=${encodeURIComponent(data.eventID)}`, {
+    method: "GET",
+    headers: {'Content-Type': 'application/json' },
+  })
+  let resp = await response.json();
+  return resp;
+}
+
 // YELP API Functions
 export async function search_restaurant(_searchString, _locationString) {
   const data = {searchString:_searchString, locationString: _locationString};

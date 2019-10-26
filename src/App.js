@@ -23,7 +23,7 @@ export default function App() {
           </Button>
           <Button color="inherit" component = {NavLink} to = "/" >Create Event</Button>
 
-          <Button color="inherit" component = {NavLink} to = "/vote/">
+          <Button color="inherit" component = {NavLink} to = "/vote">
             Vote
           </Button>
 

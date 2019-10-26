@@ -92,7 +92,6 @@ export default class EventCreator extends Component {
           </MuiPickersUtilsProvider>
 
 
-
           <Button
             type = "submit"
             variant="contained"

@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import RestaurantPoll from "./RestaurantPoll"
 import EventCreator from "./EventCreator";
+import EventSearch from "./EventSearch"
 
 const HomePage = () => (
   <div>
@@ -28,10 +29,18 @@ const NotFoundPage = () => (
   404!
   </div>
 );
+const DefaultVote = () => (
+  <div>
+    <App/>
+    <EventSearch/>
+  </div>
+);
 const routes = (
   <BrowserRouter>
     <Switch>
       <Route path="/" component = {HomePage} exact = {true}/>
+      <Route path="/vote" component = {DefaultVote} exact = {true}/>
+
       <Route path="/vote/:id" component = {VotePage}/>
       <Route component = {NotFoundPage}/>
     </Switch>
