@@ -2,14 +2,33 @@ import sqlalchemy
 import cockroachdb
 import random
 from . import schema
+from .schema import Base
+from sqlalchemy import create_engine
 
-# Creates an event
-def createEvent(sess, eventName, eventDateTime, location):
-    UID = random.getrandbits(128)
 
-    sess.add(Event(uid=UID, name=eventName, location=location))
 
-    return UID
+class Service():
+
+    def __init__(self):
+        self.engine = create_engine(
+                                    'cockroachdb://super@localhost:26257/what2eat',
+                                    connect_args={'sslmode': 'disable'},
+                                    echo=True                   # Log SQL queries to stdout
+                                )
+
+        Base.metadata.create_all(engine)
+
+    def createEvent(self, eventName, eventDateTime, location):
+        UID = random.getrandbits(128)
+        run_transaction(sessionmaker(bind=self.engine), lambda s: self._createEvent(s, eventName, eventDateTime, location))
+        return UID
+
+    # Creates an event
+    def _createEvent(self, sess, eventName, eventDateTime, location):
+        sess.add(Event(uid=UID, name=eventName, location=location))
+
+    def login(self, username):
+
 
 #Creators added during event page creation, and invitees are added during sign in on shareable link
 def addUser(sess, name, eventUID, creator):
@@ -37,5 +56,3 @@ def voteRestaurant(sess, userID, yelpID):
 #
 def addRestaurant(sess, eventID, yelpID):
     sess.add(RestaurantOption(event_id=eventID, yelpID=yelpID))
-
-

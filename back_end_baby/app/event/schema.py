@@ -35,7 +35,7 @@ class TimeVoteSchema(Schema):
 
 #sqlalchemy stuff
 
-from sqlalchemy import create_engine, Column, Integer, ForeignKey, String, Boolean, DateTime
+from sqlalchemy import Column, Integer, ForeignKey, String, Boolean, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import sessionmaker
@@ -96,12 +96,3 @@ class TimeVote(Base):
 # connecting to CockroachDB using the 'cockroachdb' dialect.
 # For more information, see
 # https://github.com/cockroachdb/cockroachdb-python.
-
-engine = create_engine(
-    'cockroachdb://super@localhost:26257/what2eat',
-    connect_args={'sslmode': 'disable'},
-    echo=True                   # Log SQL queries to stdout
-)
-
-# Automatically create the "accounts" table based on the Account class.
-Base.metadata.create_all(engine)
