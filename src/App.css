@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background: "#87b9e8";
+  color: "#87b9e8";
 }
 
 .App-logo {
@@ -22,18 +24,37 @@
 }
 
 .navbar {
-  background-color: "#87b9e8";
+  color: #87b9e8;
+  background: #87b9e8;
+  background-color: #87b9e8;
 }
 
 .create-event {
+  margin: auto;
   display: flex;
+  width: 400px;
+
   flex-direction: column;
 }
 
 .create-event-field {
-  width: min(300px, 80vw);
+  margin: 20px auto;
+  width: 300px;
 }
 
+.create-event-submit {
+  margin: 20px 0px;
+}
+
+.navbar {
+  height: 60px;
+  text-align: left;
+  margin-bottom: 30px;
+  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)
+}
+.navbar-text {
+  padding: 10px 10px;
+}
 .restaurantlist {
   width: 500px;
   height: 450px;
