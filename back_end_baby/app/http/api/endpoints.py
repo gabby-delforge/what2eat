@@ -6,6 +6,7 @@ import app.yelp.interface as yelp
 app = Flask(__name__)
 CORS(app)
 
+service = Service()
 
 @app.route("/search_restaurant", methods=["GET"])
 def restaurant_search():
@@ -22,18 +23,18 @@ def login():
     payload = {}
     event_id = request_data["eventID"]
     username = request_data["username"]
-    userID = Service.getUserID(event_id, username)
+    userID = service.login(username, event_id, False)
     payload["user_id"] = userID
 
     #expect dictionary as response from getRestaurantVotes
-    restaurant_votes = Service.getRestaurantVotes(event_id, userID)
+    restaurant_votes = service.getRestaurantVotes(event_id, userID)
     payload["restaurant_votes"] = restaurant_votes
     return json_response(payload)
 
 @app.route("/create_event", methods=["POST"])
 def create_event():
     request_data = request.get_json()
-    event_id = Service.
+    event_id = service.
     username = request_data["username"]
     userID = Service.getUserID(event_id, username)
     payload["user_id"] = userID
