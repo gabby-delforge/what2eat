@@ -1,5 +1,7 @@
 import sqlalchemy
+import cockroachdb
 import random
+from . import schema
 
 #
 def createEvent(sess, eventName, eventDateTime, location):
@@ -25,12 +27,13 @@ def addUser(sess, name, eventUID, creator):
 
 
 #Delete all exisiting votes, then add vote to restaurant_votes
-def voteRestaurant(sess, userID, restaurantID):
+def voteRestaurant(sess, userID, yelpID):
     sess.execute("DELETE FROM restaurant_votes WHERE user_ID=:UserID", {"UserID":userID})
+    sess.execute("SELECT id FROM restaurant_options WHERE yelp_id=:name AND eventUID:=eventUID")
     sess.add(RestaurantVote(user_ID=userID, restaurantID=restaurantID))
 
-
-def suggestRestaurant(sess, eventID, yelpID):
+#
+def addRestaurant(sess, eventID, yelpID):
     sess.add(RestaurantOption(event_id=eventID, yelpID=yelpID))
 
 
