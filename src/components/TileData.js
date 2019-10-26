@@ -18,3 +18,43 @@ export const tileData = [
     more_info: 'Hare did not win the race.'
   },
 ];
+
+// 
+// avatar={
+//   <Avatar aria-label="recipe" >
+//     <img src={card.avi} />
+//   </Avatar>
+// }
+
+
+// <GridList cellHeight={180} className = "restaurantlist">
+//   <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+//     <ListSubheader component="div">
+//       Pick Your Favorite Restaurant
+//     </ListSubheader>
+//   </GridListTile>
+//   {this.tileData.map(tile => (
+//     <GridListTile key={tile.img} >
+//       <img src={tile.img} alt={tile.title} />
+//       <GridListTileBar
+//         title={tile.title}
+//         subtitle={<span>by: {tile.author}</span>}
+//         actionIcon={
+//           <IconButton aria-label={`info about ${tile.title}`} className = "infoicon" >
+//             <InfoIcon />
+//           </IconButton>
+//         }
+//       />
+//     </GridListTile>
+//   ))}
+//
+// </GridList>
+// <br/>
+// <Button
+//   variant="contained"
+//   color="default"
+//   startIcon={<AddIcon />}
+//   onClick = {this.addRestaurant}
+// >
+//   Add new Restaurant
+// </Button>

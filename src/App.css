@@ -55,12 +55,38 @@
 .navbar-text {
   padding: 10px 10px;
 }
-.restaurantlist {
-  width: 500px;
-  height: 450px;
-  margin: auto !important;
+.restaurantCardfav {
+  max-width: 345px;
+  border-style: solid
 }
+.restaurantCardreg {
+  max-width: 345px;
+}
+.cardMedia {
+  height: 0px;
+  padding-top: 56.25%;
+}
+.bigAvatar {
+  margin: 10px;
+  width: 60px;
+  height: 60px;
+}
+.restaurantChip{
+  margin: 3px;
+}
+.MuiCardHeader-title {
+  text-align: left;
+}
+.headCard {
+  transform: scale(0.8, 0.8);
 
-.infoicon {
-    color: rgba(255, 255, 255, 0.54) !important;
+}
+.moneyIcon{
+  margin: -6px;
+  color: gray;
+}
+.locationIcon{
+  position: relative;
+  top: 5px;
+  color: gray;
 }

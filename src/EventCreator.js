@@ -9,7 +9,6 @@ import {
 } from "@material-ui/pickers";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import cx from "classnames";
 
 export default class EventCreator extends Component {
   constructor(props) {
@@ -74,7 +73,7 @@ export default class EventCreator extends Component {
 
           <Button
             variant="contained"
-            color="primary" 
+            color="primary"
             className="create-event-submit"
           >
             Create Event
