@@ -31,5 +31,15 @@
 }
 
 .create-event-field {
-  width: min(300px, 80vw)
+  width: min(300px, 80vw);
+}
+
+.restaurantlist {
+  width: 500px;
+  height: 450px;
+  margin: auto !important;
+}
+
+.infoicon {
+    color: rgba(255, 255, 255, 0.54) !important;
 }
