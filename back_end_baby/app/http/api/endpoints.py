@@ -34,16 +34,30 @@ def login():
 @app.route("/create_event", methods=["POST"])
 def create_event():
     request_data = request.get_json()
-    event_id = service.
-    username = request_data["username"]
-    userID = Service.getUserID(event_id, username)
-    payload["user_id"] = userID
+    eventName = request_data["eventName"]
+    eventDateTime = request_data["eventDateTime"]
+    location = request_data["location"]
+    event_id = service.createEvent(eventName, eventDateTime, location):
 
-    #expect dictionary as response from getRestaurantVotes
-    restaurant_votes = Service.getRestaurantVotes(event_id, userID)
-    payload["restaurant_votes"] = restaurant_votes
-    return json_response(payload)
-#
+    return json_response({"eventID":event_id})
+
+@app.route("/vote_restaurant", methods=["POST"])
+def vote_restaurant():
+    request_data = request.get_json()
+    userID = request_data["userID"]
+    YelpID = request_data["YelpID"]
+    eventID = request_data["eventID"]
+    service.voteRestaurant(userID, yelpID, eventID)
+    return json_response({})
+
+@app.route("/get_restaurants", methods=["GET"])
+def get_restaurants():
+    userID = request.args["userID"]
+    eventID = request.args["eventID"]
+    service.voteRestaurant(userID, yelpID, eventID)
+    return json_response({})
+
+
 # @app.route("/kudos", methods=["POST"])
 # def create():
 #    github_repo = GithubRepoSchema().load(json.loads(request.data))
