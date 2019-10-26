@@ -1,7 +1,7 @@
 from sqlalchemy.orm import sessionmaker
 from cockroachdb.sqlalchemy import run_transaction
 import random
-import schema
+from . import schema
 from sqlalchemy import create_engine
 import datetime
 
