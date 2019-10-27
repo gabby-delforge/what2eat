@@ -117,8 +117,23 @@ class Service():
                                    {"userID": userID, "eventID": eventID}).fetchall()
         return result
 
+    def getResults(self, eventID):
+        ids = self.sess.execute("SELECT id, yelp_id from restaurant_options where event_id=:eventID", {"eventID": eventID}).fetchall()
+        results = []
+        for id in ids:
+            votes = self.sess.execute("SELECT ro.yelp_id from restaurant_options as ro, restaurant_votes as rv"
+                                       " WHERE rv.option_id=:restID and ro.event_id=:eventID)",
+                                       {"restID": id[0], "eventID": eventID}).fetchall()
+            result = (id[1], len(votes))
+            results.append(result)
+        return results
+
+
 
 serviceObj = Service()
+print(serviceObj.sess.)
+
+
 print("All events", serviceObj.sess.execute("Select id, name from events").fetchall())
 print("Event info:", serviceObj.eventInfo(8441023917761369310))
 # results = serviceObj.sess.query(schema.Event).filter(schema.Event.name=="CalHacks5")
