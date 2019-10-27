@@ -124,7 +124,7 @@ export default class EventCreator extends Component {
             type="submit"
             variant="contained"
             color="primary"
-            style={{width: "50%", margin: "0 auto"}}
+            style={{margin: "auto"}}
             className="create-event-submit"
           >
             Create Event

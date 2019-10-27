@@ -65,7 +65,11 @@
 }
 
 .create-event-submit {
-  margin: 20px 0px;
+  width: 30%;
+  min-width: 10em !important;
+  margin: auto !important;
+  background-color: #374785 !important;
+  margin: 20px 0px !important;
 }
 
 .navbar {
