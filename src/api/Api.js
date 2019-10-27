@@ -37,7 +37,7 @@ export async function get_restaurant_data(_eventID, _userID) {
   return {
     restaurants: [
       {
-        id: 0,
+        id: "0",
         avi:
           "https://upload.wikimedia.org/wikipedia/en/thumb/8/85/Panda_Express_logo.svg/1200px-Panda_Express_logo.svg.png",
         img:
@@ -59,7 +59,7 @@ export async function get_restaurant_data(_eventID, _userID) {
         selected: false
       },
       {
-        id: 1,
+        id: "1",
         avi: "http://www.topdoghotdogs.com/images/logo_black_header.png",
         img:
           "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
@@ -76,6 +76,27 @@ export async function get_restaurant_data(_eventID, _userID) {
         rating: 5,
         dollar_signs: 2,
         location: "Downtown Berkeley",
+        selected: false
+      },
+      {
+        id: "2",
+        avi:
+          "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/08/rabbits-235417.jpg?h=f699065c&itok=xcSgVx9D",
+        img:
+          "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c11f34da-1f91-41aa-896f-143beac9258e/d22yhqn-8bb51657-36f9-435d-a25b-29b8c5af1be7.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2MxMWYzNGRhLTFmOTEtNDFhYS04OTZmLTE0M2JlYWM5MjU4ZVwvZDIyeWhxbi04YmI1MTY1Ny0zNmY5LTQzNWQtYTI1Yi0yOWI4YzVhZjFiZTcuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.th_KdgKw84k1rT6_IgFP6GkkOLssLa-4ZyCs4wsrP3Q",
+        photos: [
+          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
+          "https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_4x3_992.jpg",
+          "http://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2Fa4be5dc2-59ed-11e8-9e86-99299e0f1a1c.jpg?crop=1909%2C1074%2C51%2C399&resize=685"
+        ],
+        title: "Bun",
+        description: "bunnies",
+        more_info: "Hare did not win the race.",
+        tags: ["Bunnies", "Very Fast"],
+        open: false,
+        rating: 4,
+        dollar_signs: 4,
+        location: "West Berkeley",
         selected: false
       }
     ]
@@ -159,6 +180,18 @@ export async function add_restaurant(_yelpID, _eventID) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ yelpID: _yelpID, eventID: _eventID })
+  });
+  let resp = await response.json();
+  return resp;
+}
+
+export async function get_vote_results(_eventID) {
+  //MOCK
+  return {"0": 2, "1": 14, "2": 6};
+  const response = await fetch("example.com/get_results", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ eventID: _eventID})
   });
   let resp = await response.json();
   return resp;
