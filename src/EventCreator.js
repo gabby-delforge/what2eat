@@ -11,6 +11,7 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import * as Api from "./api/Api";
 import Typography from "@material-ui/core/Typography";
+import {Redirect} from 'react-router-dom';
 
 export default class EventCreator extends Component {
   constructor(props) {
@@ -20,7 +21,9 @@ export default class EventCreator extends Component {
       creatorName: "",
       selectedDate: new Date(),
       eventName: "",
-      friends: ""
+      friends: "",
+      submitEvent: false,
+      eventNumber: 0
     };
   }
 
@@ -51,11 +54,16 @@ export default class EventCreator extends Component {
       this.state.selectedDate.getTime(),
       this.state.creatorName,
       "Berkeley"
-    ).then((apiResp)=>{console.log(apiResp);});
-    
+    ).then((apiResp)=>{this.setState({submitEvent: true, eventNumber: apiResp.eventID});});
+
   }
 
   render() {
+    if (this.state.submitEvent) {
+      return (
+          <Redirect to = {"/vote/" + this.state.eventNumber}/>
+      )
+    }
     return (
       <Paper className="create-event">
           <div className="create-event-header-container">
