@@ -302,6 +302,7 @@ class RestaurantCard extends Component {
   }
 
   render() {
+      console.log(this.props.photos);
     return (
       <Grid item xs={4} sm={6} md={4}>
         <Card className={this.props.className} onClick={this.props.onClick}>
@@ -341,17 +342,7 @@ class RestaurantCard extends Component {
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <CardContent className="card-media-small-container">
               <CardMedia
-                image={this.props.photos[0]}
-                title="secondary photo"
-                className="card-media-small"
-              />
-              <CardMedia
                 image={this.props.photos[1]}
-                title="secondary photo"
-                className="card-media-small"
-              />
-              <CardMedia
-                image={this.props.photos[2]}
                 title="secondary photo"
                 className="card-media-small"
               />
