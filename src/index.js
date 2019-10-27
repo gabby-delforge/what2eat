@@ -58,7 +58,6 @@ const routes = (
       <Route path="/vote" component = {DefaultVote} exact = {true}/>
       <Route path="/vote/:id" component = {VotePage}/>
       <Route path="/about" component = {AboutPage}/>
-
       <Route path="/results" component = {ResultPage}/>
       <Route component = {NotFoundPage}/>
     </Switch>
