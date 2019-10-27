@@ -3,7 +3,7 @@ export async function login(_username, _eventID) {
   //MOCK
   // return { user_id: 1, restaurant_votes: ["1", "2"] };
   //MOCK
-  const response = await fetch("https://www.what2eat2019.herokuapp.com/login", {
+  const response = await fetch("https://what2eat2019.herokuapp.com/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username: _username, eventID: _eventID })
@@ -40,7 +40,7 @@ export async function create_event(
 //VOTE_RESTAURANT
 export async function vote_restaurant(_eventID, _yelpID, _userID) {
   return;
-  const response = await fetch("https://www.what2eat2019.herokuapp.com/vote_restaurant", {
+  const response = await fetch("https://what2eat2019.herokuapp.com/vote_restaurant", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -113,7 +113,7 @@ export async function get_event_restaurants(_eventID) {
   //MOCK
   const data = { eventID: _eventID };
   const response = await fetch(
-    `https://www.what2eat2019.herokuapp.com
+    `https://what2eat2019.herokuapp.com
 /get_restaurants?eventID=${encodeURIComponent(data.eventID)}`,
     {
       method: "GET",
@@ -129,7 +129,7 @@ export async function get_vote_results(_eventID) {
   //MOCK
   // return { "0": 2, "1": 14, "2": 6 };
   // MOCK
-  const response = await fetch("https://www.what2eat2019.herokuapp.com/get_results", {
+  const response = await fetch("https://what2eat2019.herokuapp.com/get_results", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ eventID: _eventID })
@@ -142,7 +142,7 @@ export async function get_vote_results(_eventID) {
 export async function search_restaurant(_searchString, _locationString) {
   const data = { searchString: _searchString, locationString: _locationString };
   const response = await fetch(
-    `https://www.what2eat2019.herokuapp.com
+    `https://what2eat2019.herokuapp.com
 /search_restaurant?search_string=${encodeURIComponent(
       data.searchString
     )}&location_string=${encodeURIComponent(data.locationString)}`,
@@ -157,7 +157,7 @@ export async function search_restaurant(_searchString, _locationString) {
 
 //ADD_RESTAURANT
 export async function add_restaurant(_yelpID, _eventID) {
-  const response = await fetch("https://www.what2eat2019.herokuapp.com/add_restaurant", {
+  const response = await fetch("https://what2eat2019.herokuapp.com/add_restaurant", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ yelpID: _yelpID, eventID: _eventID })
@@ -173,7 +173,7 @@ export async function get_event_info(_eventID) {
   //MOCK
   const data = { eventID: _eventID };
   const response = await fetch(
-    `https://www.what2eat2019.herokuapp.com/event_info?eventID=${encodeURIComponent(data.eventID)}`,
+    `https://what2eat2019.herokuapp.com/event_info?eventID=${encodeURIComponent(data.eventID)}`,
     {
       method: "GET",
       headers: { "Content-Type": "application/json" }
