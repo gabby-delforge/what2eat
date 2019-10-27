@@ -271,7 +271,7 @@
 }
 .foodImg{
   margin: 30px 0;
-  
+
 }
 
 .aboutTextSmall {
@@ -296,4 +296,11 @@
 }
 
 .search-result-chip{
-  margin: 3px 10px 3px 3px !important}
+  margin: 3px 10px 3px 3px !important
+}
+
+.event-header {
+  padding: 2px 2px;
+  font-family: 'Roboto Condensed', sans-serif !important;
+  font-size: 2em !important;
+}
