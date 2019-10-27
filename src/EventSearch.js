@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import {NavLink, Redirect} from 'react-router-dom';
+import Typography from "@material-ui/core/Typography";
 
 export default class EventSearch extends Component {
   constructor(props) {
@@ -29,12 +30,13 @@ export default class EventSearch extends Component {
       )
     }
     return (
-      <Paper className="create-event">
-        <form onSubmit={this.onSubmitForm} className="create-event-field" noValidate autoComplete="off">
+      <Paper className="find-event">
+        <form onSubmit={this.onSubmitForm} className="find-event-field" noValidate autoComplete="off">
           <TextField
             fullWidth
             id="standard-uncontrolled"
-            label="Do you have an event code?"
+            placeholder="It's the thing after vote in the url :)"
+            label="What's your special event code?"
             margin="normal"
             onChange = {this.handleNameChange}
           />
@@ -46,7 +48,7 @@ export default class EventSearch extends Component {
             component = {NavLink}
             to = {"/vote/" + this.state.eventCode}
           >
-            Create Event
+            Find my Party!
           </Button>
         </form>
       </Paper>

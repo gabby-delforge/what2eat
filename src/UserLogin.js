@@ -18,10 +18,10 @@ export default class UserLogin extends Component {
   };
   render() {
     return (
-      <Paper className="create-event">
+      <Paper className="find-event">
         <form
           onSubmit={() => this.props.onLogin(this.state.userName)}
-          className="create-event-field"
+          className="find-event-field"
           noValidate
           autoComplete="off"
         >
