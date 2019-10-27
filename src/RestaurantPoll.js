@@ -103,7 +103,7 @@ export default class RestaurantPoll extends Component {
         console.log(apiResponse);
         this.setState({ searchResults: apiResponse.restaurants });
     });
-    
+
   };
 
   updateSearch = (event) => {
@@ -150,6 +150,9 @@ export default class RestaurantPoll extends Component {
     }
     return (
       <div>
+      <Typography variant="h6" className="event-header" align = "center">
+       {this.props.eventInfo.eventName}
+      </Typography>
         <Grid container spacing={3} className="restaurant-grid">
           {this.state.cardData.map(card => (
             <RestaurantCard
