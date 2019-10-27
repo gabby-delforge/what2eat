@@ -126,7 +126,7 @@ class Service():
                                        {"restID": id[0], "eventID": eventID}).fetchall()
             result = (id[1], len(votes))
             results.append(result)
-        return results
+        return results.sort(key = lambda x: x[1])
 
 
 
