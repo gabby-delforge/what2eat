@@ -46,13 +46,13 @@ export default class EventCreator extends Component {
       "DATE: ",
       this.state.selectedDate
     );
-    let apiResp = Api.create_event(
+    Api.create_event(
       this.state.eventName,
-      this.state.selectedDate,
+      this.state.selectedDate.getTime(),
       this.state.creatorName,
       "Berkeley"
-    );
-    console.log(apiResp);
+    ).then((apiResp)=>{console.log(apiResp);});
+    
   }
 
   render() {
