@@ -32,14 +32,33 @@
 .create-event {
   margin: auto;
   display: flex;
-  width: 400px;
+  justify-content: flex-start;
+  width: 40%;
+  height: 80vh;
+  
 
   flex-direction: column;
 }
 
+.create-event-header-container {
+  background: #cccccc;
+  height: 10vh;
+
+}
+.create-event-header {
+  font-family: 'Staatliches' !important;
+  font-size: 2em !important;
+  margin-left: 10% !important;
+}
+
 .create-event-field {
-  margin: 20px auto;
-  width: 300px;
+  margin: 5vh auto;
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
 }
 
 .create-event-submit {
@@ -54,8 +73,17 @@
 }
 .navbar-text {
   padding: 10px 10px;
+  font-family: 'Staatliches', cursive !important;
+  font-size: 3em !important;
 }
 
+.navbar-button {
+  margin-left: 20px !important;
+}
+
+.burger {
+  margin-bottom: 5px;
+}
 .restaurant-grid {
   margin: 3vm;
 }

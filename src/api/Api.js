@@ -1,5 +1,3 @@
-// USER FUNCTIONS
-
 //LOGIN
 export async function login(_username, _eventID) {
   //MOCK
@@ -55,7 +53,8 @@ export async function vote_restaurant(_eventID, _yelpID, _userID) {
 }
 
 
-//GET_RESTAURANTS
+// GET_RESTAURANTS
+// Gets all the restaurants associated with a certain event. 
 export async function get_event_restaurants(_eventID) {
   //MOCK
   return {
