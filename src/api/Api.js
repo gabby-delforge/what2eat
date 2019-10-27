@@ -6,6 +6,7 @@ export async function login(_username, _eventID) {
     body: JSON.stringify({ username: _username, eventID: _eventID })
   });
   let resp = await response.json();
+  console.log(resp);
   return resp;
 }
 
@@ -35,6 +36,7 @@ export async function create_event(
 
 //VOTE_RESTAURANT
 export async function vote_restaurant(_eventID, _yelpID, _userID) {
+  console.log(_userID);
   const response = await fetch(
     "https://what2eat2019.herokuapp.com/vote_restaurant",
     {

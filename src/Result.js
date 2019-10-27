@@ -41,16 +41,20 @@ export default class Result extends Component {
 
   getRestaurantBarData(yelpID) {
     if (yelpID in this.state.results) {
+      console.log(this.state.results[yelpID]);
       return this.normalize_value(this.state.results[yelpID]);
     } else {
+      console.log("returning 0");
       return 0;
     }
   }
 
   render() {
+    console.log(this.props);
+    console.log(this.state.results);
     return (
       <div className="results">
-        {Object.keys(this.props.restaurants).map(restaurant => (
+        {this.props.restaurants.map(restaurant => (
           <div className="result-container">
             <Typography variant="h8" className="result-child">
               {restaurant.name}

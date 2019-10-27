@@ -20,6 +20,7 @@ export default class Vote extends Component {
     API.login(username, this.props.eventID).then(loginResponse => {
       //UID and VoteData
       const UID = loginResponse.user_id;
+      console.log("userid", UID);
       const voteData = loginResponse.voteData;
       this.setState({ username: username, userID: UID }, () => {
         //Get event restaurants

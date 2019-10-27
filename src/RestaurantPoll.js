@@ -204,6 +204,7 @@ export default class RestaurantPoll extends Component {
               To add a restuarant to your group's party please search for the
               name below:
             </DialogContentText>
+            
             <TextField
               autoFocus
               margin="dense"
@@ -214,10 +215,11 @@ export default class RestaurantPoll extends Component {
             {this.state.searchResults ? listSearchResults : <span />}
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleSearch} color="secondary">
+            <Button onClick={this.handleSearch} variant="contained" color="primary" className="see-search-results-button"> 
               <SearchIcon />
             </Button>
           </DialogActions>
+          
         </Dialog>
         {this.state.selectedOne ? (
           <Button
@@ -273,7 +275,7 @@ export default class RestaurantPoll extends Component {
           </DialogTitle>
           <DialogContent className="result-content">
             <Result
-              eventID={this.props.eventInfo.eventID}
+              eventID={this.props.eventID}
               restaurants={this.state.cardData}
             />
           </DialogContent>

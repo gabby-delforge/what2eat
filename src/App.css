@@ -308,3 +308,7 @@
   font-family: 'Roboto Condensed', sans-serif !important;
   font-size: 2em !important;
 }
+
+.see-search-results-button {
+  background-color:#374785;
+}
