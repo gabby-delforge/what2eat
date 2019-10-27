@@ -3,6 +3,7 @@ from app.event.service import Service
 from flask_cors import CORS
 import app.yelp.interface as yelp
 from collections import OrderedDict
+import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -36,9 +37,9 @@ def login():
 def create_event():
     request_data = request.get_json()
     eventName = request_data["eventName"]
-    eventDateTime = request_data["eventDateTime"]
+    eventDateTime = datetime.datetime.fromtimestamp(int(request_data["eventDateTime"])/1000)
     location = request_data["location"]
-    event_id = service.createEvent(eventName, eventDateTime, location):
+    event_id = service.createEvent(eventName, eventDateTime, location)
 
     return json_response({"eventID":event_id})
 
@@ -70,6 +71,7 @@ def get_results():
 
 @app.route("/add_restaurant", methods=["POST"])
 def add_restaurant():
+    request_data = request.get_json()
     YelpID = request_data["YelpID"]
     eventID = request_data["eventID"]
     service.addRestaurant(eventID, YelpID)

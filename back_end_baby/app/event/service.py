@@ -1,7 +1,7 @@
 from sqlalchemy.orm import sessionmaker
 from cockroachdb.sqlalchemy import run_transaction
 import random
-import schema
+from . import schema
 import time
 # import schema
 from sqlalchemy import create_engine
@@ -156,4 +156,3 @@ serviceObj = Service()
 # serviceObj.voteRestaurant(UID1, "Gusteau's", eventID)
 # serviceObj.voteRestaurant(UID1, "Gusteau's", eventID)
 # print("all 1 vote", serviceObj.getResults(eventID))
-
