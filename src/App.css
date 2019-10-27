@@ -82,6 +82,8 @@
   color: #F8E9A1 !important;
 }
 
+
+
 .navbar-button {
   margin-left: 20px !important;
 }
@@ -253,7 +255,6 @@
 .about-page {
   margin: auto;
   width: 40%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -265,14 +266,20 @@
   height: 60px;
 }
 .foodImg{
-  height: 100%;
-  width: 50%;
-  margin-bottom: -10%;
+  margin: 30px 0;
+  
 }
 
 .aboutTextSmall {
-  padding: 10px 10px;
+  padding: 10px 5%;
 }
+
+.about-header {
+  padding: 10px 10px;
+  font-family: 'Roboto Condensed', sans-serif !important;
+  font-size: 3em !important;
+}
+
 .avatar-list {
   display: flex;
   justify-content: center;

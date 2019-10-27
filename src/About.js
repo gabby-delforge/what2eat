@@ -15,11 +15,11 @@ export default class EventSearch extends Component {
       <div>
         <Paper className="about-page">
 
-          <Typography variant="h6" className="navbar-text" align = "center">
-            what2eat
+          <Typography variant="h6" className="about-header" align = "center">
+            About what2eat
           </Typography>
           <center>
-            <img className = "foodImg" src = "https://i.etsystatic.com/9442528/r/il/1c233d/1540488492/il_570xN.1540488492_ltmu.jpg?fbclid=IwAR0jz5i96HL1RAyX1lu7PIxDNUjLEWmeoIxE8sQ4aelcHXL50V7Uv6x4Zcg"/>
+            <img className = "foodImg" src = "https://i.imgur.com/Ps1WfOb.png"/>
           </center>
           <Typography variant="h8" className ="aboutTextSmall">
            WHAT2EAT solves the indecision problem that plagues most friend groups. It's hard to figure out everyones availability and figuring out what food works for everyone is even harder. We used React for our front-end using MaterialUI and for our background we used Python with services like cockroachDB and Flask. We're a group of 4 hackers from Berkeley; we're all seniors so this is our last CalHacks :(
