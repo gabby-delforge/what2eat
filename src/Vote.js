@@ -23,7 +23,7 @@ export default class Vote extends Component {
       const voteData = loginResponse.voteData;
       this.setState({ username: username, userID: UID }, () => {
         //Get event restaurants
-        API.get_restaurant_data(this.props.eventID, UID).then(
+        API.get_event_restaurants(this.props.eventID, UID).then(
           restaurantsResponse => {
             console.log(restaurantsResponse);
             this.setState(

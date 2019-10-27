@@ -116,16 +116,13 @@ export default class RestaurantPoll extends Component {
               className={
                 card.selected ? "restaurant-card-fav" : "restaurant-card-reg"
               }
-              avi={card.avi}
-              img={card.img}
+              image_url={card.image_url}
               photos={card.photos}
-              title={card.title}
-              description={card.description}
-              more_info={card.more_info}
-              tags={card.tags}
+              name={card.name}
+              categories={card.categories}
               rating={card.rating}
-              dollar_signs={card.dollar_signs}
-              location={card.location}
+              price={card.price}
+              city={card.city}
               unselectAll={this.unselectAll}
               selected={card.selected}
               onClick={() => this.handleFavoriteClick(card)}
@@ -191,18 +188,18 @@ class RestaurantCard extends Component {
             action={
               <CardHeaderAction
                 rating={this.props.rating}
-                cost={this.props.dollar_signs}
+                cost={this.props.price}
               />
             }
-            title={this.props.title}
+            title={this.props.name}
           />
           <CardMedia
-            image={this.props.img}
-            title={this.props.title}
+            image={this.props.image_url}
+            title={this.props.name}
             className="cardMedia"
           />
           <CardContent>
-            {this.props.tags.map(tag => (
+            {this.props.categories.map(tag => (
               <Chip
                 className="restaurantChip"
                 size="medium"
