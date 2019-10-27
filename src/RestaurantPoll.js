@@ -106,13 +106,9 @@ export default class RestaurantPoll extends Component {
       apiResponse => {
         console.log(apiResponse);
         this.setState({ searchResults: apiResponse.restaurants });
-<<<<<<< HEAD
       }
     );
-=======
-    });
 
->>>>>>> 6c283ca3dee1a46a58ea4c5a9155796b6593ed3b
   };
 
   updateSearch = event => {
