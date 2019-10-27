@@ -79,9 +79,13 @@ export default class EventCreator extends Component {
         >
           <TextField
             fullWidth
-            id="standard-uncontrolled"
+            id="standard-full-width"
+            placeholder="eg. oski"
             label="What's your name?"
             margin="normal"
+            InputLabelProps={{
+                shrink: true
+              }}
             onChange={this.handleNameChange}
           />
 
@@ -119,7 +123,6 @@ export default class EventCreator extends Component {
               fullWidth
               margin="normal"
               id="time-picker"
-              label="Time picker"
               value={this.state.selectedDate}
               onChange={this.handleDateChange}
               KeyboardButtonProps={{

@@ -19,7 +19,7 @@ export default class Vote extends Component {
     //Login and get UID and user vote info
     API.login(username, this.props.eventID).then(loginResponse => {
       //UID and VoteData
-      const UID = loginResponse.UID;
+      const UID = loginResponse.user_id;
       const voteData = loginResponse.voteData;
       this.setState({ username: username, userID: UID }, () => {
         //Get event restaurants
@@ -60,7 +60,7 @@ export default class Vote extends Component {
             userID={this.state.userID}
           />
         ) : (
-          <UserLogin onLogin={this.onLogin} />
+          <UserLogin onLogin={this.onLogin} eventID={this.props.eventID} />
         )}
       </div>
     );

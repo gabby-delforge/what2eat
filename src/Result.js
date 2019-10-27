@@ -39,15 +39,6 @@ export default class Result extends Component {
     return ((value - min) * 100) / (max - min);
   };
 
-  getRestaurantName = id => {
-    for (let i = 0; i < this.props.restaurants.length; i++) {
-      if (this.props.restaurants[i].yelpID === id) {
-        return this.props.restaurants[i].name;
-      }
-    }
-    return "";
-  };
-
   getRestaurantBarData(yelpID) {
     if (yelpID in this.state.results) {
       return this.normalize_value(this.state.results[yelpID]);

@@ -36,9 +36,11 @@
   margin: auto;
   display: flex;
   justify-content: flex-start;
-  width: 40%;
+  width: 60%;
+  min-width: 400px;
   height: 80vh;
   min-height: 500px;
+  max-height: 700px;
 
   flex-direction: column;
 }
@@ -66,10 +68,10 @@
 
 .create-event-submit {
   width: 30%;
+  margin-left: 50% !important;
   min-width: 10em !important;
-  margin: auto !important;
   background-color: #374785 !important;
-  margin: 20px 0px !important;
+  margin: 0 auto 20px auto !important;
 }
 
 .navbar {
@@ -242,10 +244,12 @@
 }
 
 .find-event {
+  padding: 25px;
   margin: auto;
   display: flex;
-  width: 40%;
+  width: 60%;
   height: 80vh;
+  max-height: 200px;
 }
 .find-event-field {
   margin: 5vh auto;

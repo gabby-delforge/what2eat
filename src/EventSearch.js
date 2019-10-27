@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import {NavLink, Redirect} from 'react-router-dom';
 import Typography from "@material-ui/core/Typography";
+import * as API from "./api/Api";
 
 export default class EventSearch extends Component {
   constructor(props) {
@@ -19,8 +20,11 @@ export default class EventSearch extends Component {
   };
 
   onSubmitForm = (event) => {
-    this.setState({ submitted: true})
-
+    API.get_event_info(this.state.eventCode)
+    .then(eventInfoResponse => {
+      this.setState({ submitted: true})
+    })
+    .catch(() => alert("Invalid Event Code! Please double check with your friends to get the right code!"))
   }
 
   render() {
@@ -35,7 +39,7 @@ export default class EventSearch extends Component {
           <TextField
             fullWidth
             id="standard-uncontrolled"
-            placeholder="It's the thing after vote in the url :)"
+            placeholder="It's the number after /vote in the event's url! :)"
             label="What's your special event code?"
             margin="normal"
             onChange = {this.handleNameChange}
@@ -45,8 +49,7 @@ export default class EventSearch extends Component {
             variant="contained"
             color="primary"
             className="create-event-submit"
-            component = {NavLink}
-            to = {"/vote/" + this.state.eventCode}
+            onClick = {this.onSubmitForm}
           >
             Find my Party!
           </Button>
