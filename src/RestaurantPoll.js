@@ -17,6 +17,7 @@ import Box from "@material-ui/core/Box";
 import AttachMoneyRoundedIcon from "@material-ui/icons/AttachMoneyRounded";
 import Rating from "@material-ui/lab/Rating";
 import AddLocationIcon from "@material-ui/icons/AddLocation";
+import EqualizerIcon from '@material-ui/icons/Equalizer';
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
@@ -29,6 +30,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import SearchIcon from "@material-ui/icons/Search";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import Result from "./Result"
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import * as API from "./api/Api";
@@ -46,6 +48,9 @@ export default class RestaurantPoll extends Component {
     searchResults: [],
     cardData: this.props.restaurants,
     eventInfo: this.props.eventInfo,
+    submitted: false,
+    resultsFormOpen: false,
+    selectedOne : false,
   };
 
   handleFavoriteClick = card => {
@@ -56,7 +61,7 @@ export default class RestaurantPoll extends Component {
       return (item.selected = false);
     });
     newCards[idx].selected = !old_val;
-    this.setState({ cardData: newCards });
+    this.setState({ cardData: newCards,  selectedOne: !old_val});
   };
 
   handleOpenForm() {
@@ -65,7 +70,26 @@ export default class RestaurantPoll extends Component {
   handleCloseForm() {
     this.setState({ addFormOpen: false });
   }
-
+  handleSubmit = () => {
+    let newCards = this.state.cardData.slice();
+    let favorite = false
+    newCards.map(item => {
+      if (item.selected) {
+        favorite = true
+      }
+    })
+    if (favorite){
+      this.setState({submitted : true})
+    }
+  }
+  handleViewResults = () => {
+    if (this.state.submitted) {
+      this.setState({resultsFormOpen : true})
+    }
+  }
+  handleCloseResults = () => {
+    this.setState({resultsFormOpen : false})
+  }
   handleSearch = () => {
     let results = API.search_restaurant("Burger King", "Berkeley");
     let placeholder_results = this.state.cardData;
@@ -131,9 +155,10 @@ export default class RestaurantPoll extends Component {
         </Grid>
         <br />
         <Button
-          variant="outlined"
+          variant="contained"
           color="secondary"
           onClick={this.handleOpenForm}
+          className = "add-icon"
         >
           <AddIcon />
         </Button>
@@ -159,6 +184,59 @@ export default class RestaurantPoll extends Component {
             </Button>
           </DialogActions>
         </Dialog>
+        {
+          this.state.selectedOne
+          ?
+          <Button
+            variant = "contained"
+            color="Primary"
+            onClick={this.handleSubmit}
+            className = "submit-button">
+            Vote!
+          </Button>
+        :
+        <Button
+          disabled
+          variant = "contained"
+          color="Primary"
+          onClick={this.handleSubmit}
+          className = "submit-button">
+            Vote!
+        </Button>
+        }
+        {
+          this.state.submitted
+          ?
+          <Button
+            variant = "contained"
+            color="Primary"
+            onClick={this.handleViewResults}
+            className = "view-button">
+            <EqualizerIcon/>
+          </Button>
+        :
+        <Button
+          disabled
+          variant = "contained"
+          color="Primary"
+          onClick={this.handleViewResults}
+          className = "view-button">
+            <EqualizerIcon/>
+        </Button>
+        }
+        <Dialog
+          open={this.state.resultsFormOpen}
+          onClose={this.handleCloseResults}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">
+            Let's See How Everyone Voted
+          </DialogTitle>
+          <DialogContent>
+            <Result/>
+          </DialogContent>
+        </Dialog>
+
         <br />
         <br />
       </div>
