@@ -111,8 +111,11 @@ class Service():
             return None
         return result[0], int(self.datetimeToMs(result[1]))
 
-    def getResults(self, eventID):
-        #fill
+    def getVotedRestaurants(self, userID, eventID):
+        result = self.sess.execute("SELECT ro.yelp_id from restaurant_options as ro, restaurant_votes as rv"
+                                   " WHERE rv.user_id=:userID and ro.id=rv.option_id and ro.event_id=:eventID)",
+                                   {"userID": userID, "eventID": eventID}).fetchall()
+        return result
 
 
 serviceObj = Service()
