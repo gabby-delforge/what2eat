@@ -24,7 +24,7 @@ export default function App() {
             <FastfoodSharpIcon fontSize="large" className="burger"/>
           </Button>
 
-          <Button className="navbar-button" color="inherit" component={NavLink} to="/">
+          <Button className="navbar-button" color="inherit" component={NavLink} to="/about">
             About
           </Button>
           <Button className="navbar-button" color="inherit" component={NavLink} to="/">

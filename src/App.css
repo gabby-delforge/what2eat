@@ -39,7 +39,6 @@
   justify-content: flex-start;
   width: 40%;
   height: 80vh;
-  
 
   flex-direction: column;
 }
@@ -236,3 +235,45 @@
   max-height: 80vh;
 }
 
+.find-event {
+  margin: auto;
+  display: flex;
+  width: 40%;
+  height: 80vh;
+}
+.find-event-field {
+  margin: 5vh auto;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+}
+.about-page {
+  margin: auto;
+  width: 40%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.big-avatar{
+  margin: 10px;
+  width: 60px;
+  height: 60px;
+}
+.foodImg{
+  height: 100%;
+  width: 50%;
+  margin-bottom: -10%;
+}
+
+.aboutTextSmall {
+  padding: 10px 10px;
+}
+.avatar-list {
+  display: flex;
+  justify-content: center;
+}

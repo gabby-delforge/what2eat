@@ -9,11 +9,18 @@ import EventCreator from "./EventCreator";
 import Vote from "./Vote";
 import EventSearch from "./EventSearch"
 import Result from "./Result"
+import About from "./About"
 
 const HomePage = () => (
   <div>
     <App />
     <EventCreator />
+  </div>
+);
+const AboutPage = () => (
+  <div>
+    <App />
+    <About />
   </div>
 );
 const VotePage = props => {
@@ -50,6 +57,8 @@ const routes = (
       <Route path="/" component = {HomePage} exact = {true}/>
       <Route path="/vote" component = {DefaultVote} exact = {true}/>
       <Route path="/vote/:id" component = {VotePage}/>
+      <Route path="/about" component = {AboutPage}/>
+
       <Route path="/results" component = {ResultPage}/>
       <Route component = {NotFoundPage}/>
     </Switch>
