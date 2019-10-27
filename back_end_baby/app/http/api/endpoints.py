@@ -50,6 +50,7 @@ def vote_restaurant():
     service.voteRestaurant(userID, yelpID, eventID)
     return json_response({})
 
+# TODO
 @app.route("/get_restaurants", methods=["GET"])
 def get_restaurants():
     userID = request.args["userID"]
@@ -57,6 +58,27 @@ def get_restaurants():
     service.voteRestaurant(userID, yelpID, eventID)
     return json_response({})
 
+# TODO
+@app.route("/get_results", methods=["GET"])
+def get_results():
+    userID = request.args["userID"]
+    eventID = request.args["eventID"]
+    service.voteRestaurant(userID, yelpID, eventID)
+    return json_response({})
+
+
+@app.route("/add_restaurant", methods=["POST"])
+def add_restaurant():
+    YelpID = request_data["YelpID"]
+    eventID = request_data["eventID"]
+    service.addRestaurant(eventID, YelpID)
+    return json_response({})
+
+@app.route("/event_info", methods=["GET"])
+def event_info():
+    eventID = request.args["eventID"]
+    name, time = service.eventInfo(eventID)
+    return json_response({"eventName": name, "eventDateTime": time})
 
 # @app.route("/kudos", methods=["POST"])
 # def create():
