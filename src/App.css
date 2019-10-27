@@ -288,3 +288,12 @@
   display: flex;
   justify-content: center;
 }
+
+.search-result-avatar {
+  height: 30px !important;
+  width: 30px !important;
+  margin-right: 10px !important;
+}
+
+.search-result-chip{
+  margin: 3px 10px 3px 3px !important}

@@ -17,7 +17,7 @@ import Box from "@material-ui/core/Box";
 import AttachMoneyRoundedIcon from "@material-ui/icons/AttachMoneyRounded";
 import Rating from "@material-ui/lab/Rating";
 import AddLocationIcon from "@material-ui/icons/AddLocation";
-import EqualizerIcon from '@material-ui/icons/Equalizer';
+import EqualizerIcon from "@material-ui/icons/Equalizer";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
@@ -30,13 +30,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import SearchIcon from "@material-ui/icons/Search";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Result from "./Result"
+import Result from "./Result";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import * as API from "./api/Api";
 
 export default class RestaurantPoll extends Component {
-
   constructor(props) {
     super(props);
     this.handleOpenForm = this.handleOpenForm.bind(this);
@@ -50,7 +49,7 @@ export default class RestaurantPoll extends Component {
     cardData: this.props.restaurants,
     submitted: false,
     resultsFormOpen: false,
-    selectedOne : false,
+    selectedOne: false
   };
 
   handleFavoriteClick = card => {
@@ -61,7 +60,7 @@ export default class RestaurantPoll extends Component {
       return (item.selected = false);
     });
     newCards[idx].selected = !old_val;
-    this.setState({ cardData: newCards,  selectedOne: !old_val});
+    this.setState({ cardData: newCards, selectedOne: !old_val });
   };
 
   handleOpenForm() {
@@ -71,44 +70,49 @@ export default class RestaurantPoll extends Component {
     this.setState({ addFormOpen: false });
   }
   handleSubmit = () => {
-      let selectedCard = {};
-      for (let i = 0; i < this.state.cardData.length; i++) {
-          if (this.state.cardData[i].selected) {
-              selectedCard = this.state.cardData[i];
-              break;
-          }
+    let selectedCard = {};
+    for (let i = 0; i < this.state.cardData.length; i++) {
+      if (this.state.cardData[i].selected) {
+        selectedCard = this.state.cardData[i];
+        break;
       }
-    API.vote_restaurant(this.props.eventID, selectedCard.yelpID, this.props.userID)
+    }
+    API.vote_restaurant(
+      this.props.eventID,
+      selectedCard.yelpID,
+      this.props.userID
+    );
     let newCards = this.state.cardData.slice();
-    let favorite = false
+    let favorite = false;
     newCards.map(item => {
       if (item.selected) {
-        favorite = true
+        favorite = true;
       }
-    })
-    if (favorite){
-      this.setState({submitted : true})
+    });
+    if (favorite) {
+      this.setState({ submitted: true });
     }
-  }
+  };
   handleViewResults = () => {
     if (this.state.submitted) {
-      this.setState({resultsFormOpen : true})
+      this.setState({ resultsFormOpen: true });
     }
-  }
+  };
   handleCloseResults = () => {
-    this.setState({resultsFormOpen : false})
-  }
+    this.setState({ resultsFormOpen: false });
+  };
   handleSearch = () => {
-    API.search_restaurant(this.state.searchString, "Berkeley").then((apiResponse)=>{
+    API.search_restaurant(this.state.searchString, "Berkeley").then(
+      apiResponse => {
         console.log(apiResponse);
         this.setState({ searchResults: apiResponse.restaurants });
-    });
-    
+      }
+    );
   };
 
-  updateSearch = (event) => {
-    this.setState({searchString: event.target.value})
-  }
+  updateSearch = event => {
+    this.setState({ searchString: event.target.value });
+  };
 
   handleAddRestaurant = newRestaurant => {
     for (let i = 0; i < this.state.cardData.length; i++) {
@@ -123,7 +127,6 @@ export default class RestaurantPoll extends Component {
     API.add_restaurant(newRestaurant.yelpID, this.props.eventID);
   };
 
-
   render() {
     let listSearchResults;
     if (this.state.searchResults) {
@@ -132,10 +135,16 @@ export default class RestaurantPoll extends Component {
           {this.state.searchResults.map(result => {
             return (
               <ListItem button>
-                <ListItemText primary={result.name} />
+                <Avatar src={result.image_url} className="search-result-avatar"/>
+                <ListItemText primary={result.name} secondary={result.city} />
+                <Chip
+                    className="search-result-chip"
+                    label={" " + result.categories[0] + " "}
+                  />
                 <Button
                   variant="outlined"
                   color="secondary"
+                  size="small"
                   onClick={() => this.handleAddRestaurant(result)}
                 >
                   <AddIcon />
@@ -175,7 +184,7 @@ export default class RestaurantPoll extends Component {
           size="large"
           color="secondary"
           onClick={this.handleOpenForm}
-          className = "add-icon"
+          className="add-icon"
         >
           <AddIcon />
         </Button>
@@ -192,7 +201,13 @@ export default class RestaurantPoll extends Component {
               To add a restuarant to your group's party please search for the
               name below:
             </DialogContentText>
-            <TextField autoFocus margin="dense" id="name" fullWidth onChange={this.updateSearch} />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              fullWidth
+              onChange={this.updateSearch}
+            />
             {this.state.searchResults ? listSearchResults : <span />}
           </DialogContent>
           <DialogActions>
@@ -201,60 +216,63 @@ export default class RestaurantPoll extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-        {
-          this.state.selectedOne
-          ?
+        {this.state.selectedOne ? (
           <Button
-            variant = "contained"
+            variant="contained"
             color="Primary"
             size="large"
             onClick={this.handleSubmit}
-            className = "submit-button">
+            className="submit-button"
+          >
             Vote!
           </Button>
-        :
-        <Button
-          disabled
-          variant = "contained"
-          color="Primary"
-          size="large"
-          onClick={this.handleSubmit}
-          className = "submit-button">
-            Vote!
-        </Button>
-        }
-        {
-          this.state.submitted
-          ?
+        ) : (
           <Button
-            variant = "contained"
+            disabled
+            variant="contained"
+            color="Primary"
+            size="large"
+            onClick={this.handleSubmit}
+            className="submit-button"
+          >
+            Vote!
+          </Button>
+        )}
+        {this.state.submitted ? (
+          <Button
+            variant="contained"
             size="large"
             color="Primary"
             onClick={this.handleViewResults}
-            className = "view-button">
-            <EqualizerIcon/>
+            className="view-button"
+          >
+            <EqualizerIcon />
           </Button>
-        :
-        <Button
-          disabled
-          variant = "contained"
-          size="large"
-          color="Primary"
-          onClick={this.handleViewResults}
-          className = "view-button">
-            <EqualizerIcon/>
-        </Button>
-        }
+        ) : (
+          <Button
+            disabled
+            variant="contained"
+            size="large"
+            color="Primary"
+            onClick={this.handleViewResults}
+            className="view-button"
+          >
+            <EqualizerIcon />
+          </Button>
+        )}
         <Dialog
           open={this.state.resultsFormOpen}
           onClose={this.handleCloseResults}
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">
-           Here are the votes so far:
+            Here are the votes so far:
           </DialogTitle>
           <DialogContent className="result-content">
-            <Result eventID={this.props.eventInfo.eventID} restaurants={this.state.cardData}/>
+            <Result
+              eventID={this.props.eventInfo.eventID}
+              restaurants={this.state.cardData}
+            />
           </DialogContent>
         </Dialog>
 
