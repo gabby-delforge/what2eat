@@ -39,26 +39,34 @@ export default class Result extends Component {
     return ((value - min) * 100) / (max - min);
   };
 
-  getRestaurantName = (id) => {
+  getRestaurantName = id => {
     for (let i = 0; i < this.props.restaurants.length; i++) {
       if (this.props.restaurants[i].yelpID === id) {
         return this.props.restaurants[i].name;
       }
     }
     return "";
+  };
+
+  getRestaurantBarData(yelpID) {
+    if (yelpID in this.state.results) {
+      return this.normalize_value(this.state.results[yelpID]);
+    } else {
+      return 0;
+    }
   }
 
   render() {
     return (
       <div className="results">
-        {Object.keys(this.state.results).map(item => (
+        {Object.keys(this.props.restaurants).map(restaurant => (
           <div className="result-container">
             <Typography variant="h8" className="result-child">
-              {this.getRestaurantName(item)}
+              {restaurant.name}
             </Typography>
             <LinearProgress
               variant="determinate"
-              value={this.normalize_value(this.state.results[item])}
+              value={this.getRestaurantBarData(restaurant.yelpID)}
               color="primary"
               className="progress-bar"
             />

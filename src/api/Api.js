@@ -44,7 +44,7 @@ export async function vote_restaurant(_eventID, _yelpID, _userID) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       eventID: _eventID,
-      yelpID: _yelpID,
+      YelpID: _yelpID,
       userID: _userID
     })
   });
