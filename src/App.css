@@ -159,5 +159,11 @@
 .result-child {
   margin-left: 10px !important;
   margin-right: 7px !important;
-
+}
+.submit-button {
+  position: fixed !important;
+  bottom: 0px;
+  right: 0px;
+  margin-left: 80% !important;
+  margin-right: 10% !important
 }

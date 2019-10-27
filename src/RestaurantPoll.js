@@ -29,6 +29,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import SearchIcon from "@material-ui/icons/Search";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import Result from "./Result"
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import * as API from "./api/Api";
@@ -46,6 +47,9 @@ export default class RestaurantPoll extends Component {
     searchResults: [],
     cardData: this.props.restaurants,
     eventInfo: this.props.eventInfo,
+    submitted: false,
+    resultsFormOpen: false,
+    selectedOne : false,
   };
 
   handleFavoriteClick = card => {
@@ -56,7 +60,7 @@ export default class RestaurantPoll extends Component {
       return (item.selected = false);
     });
     newCards[idx].selected = !old_val;
-    this.setState({ cardData: newCards });
+    this.setState({ cardData: newCards,  selectedOne: !this.state.selectedOne});
   };
 
   handleOpenForm() {
@@ -65,7 +69,26 @@ export default class RestaurantPoll extends Component {
   handleCloseForm() {
     this.setState({ addFormOpen: false });
   }
-
+  handleSubmit = () => {
+    let newCards = this.state.cardData.slice();
+    let favorite = false
+    newCards.map(item => {
+      if (item.selected) {
+        favorite = true
+      }
+    })
+    if (favorite){
+      this.setState({submitted : true})
+    }
+  }
+  handleViewResults = () => {
+    if (this.state.submitted) {
+      this.setState({resultsFormOpen : true})
+    }
+  }
+  handleCloseResults = () => {
+    this.setState({resultsFormOpen : false})
+  }
   handleSearch = () => {
     let results = API.search_restaurant("Burger King", "Berkeley");
     let placeholder_results = this.state.cardData;
@@ -159,6 +182,59 @@ export default class RestaurantPoll extends Component {
             </Button>
           </DialogActions>
         </Dialog>
+        {
+          this.state.selectedOne
+          ?
+          <Button
+            variant = "contained"
+            color="Primary"
+            onClick={this.handleSubmit}
+            className = "submit-button">
+            Submit!
+          </Button>
+        :
+        <Button
+          disabled
+          variant = "contained"
+          color="Primary"
+          onClick={this.handleSubmit}
+          className = "submit-button">
+            Submit!
+        </Button>
+        }
+        {
+          this.state.submitted
+          ?
+          <Button
+            variant = "contained"
+            color="Primary"
+            onClick={this.handleViewResults}
+            >
+              View Results
+          </Button>
+        :
+        <Button
+          disabled
+          variant = "contained"
+          color="Primary"
+          onClick={this.handleViewResults}
+          >
+            View Results
+        </Button>
+        }
+        <Dialog
+          open={this.state.resultsFormOpen}
+          onClose={this.handleCloseResults}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">
+            Let's See How Everyone Voted
+          </DialogTitle>
+          <DialogContent>
+            <Result/>
+          </DialogContent>
+        </Dialog>
+
         <br />
         <br />
       </div>
