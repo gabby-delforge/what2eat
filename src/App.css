@@ -75,7 +75,7 @@
   display: flex;
   height: 200px;
   margin-bottom: 5px;
-} 
+}
 .card-media-small {
   width: 100%;
   margin: 0px 5px;
@@ -146,4 +146,18 @@
   margin: auto;
   width: 80%;
   padding: 5%;
+}
+.progress-bar {
+  height: 10px !important;
+  width: 80%;
+  margin: 10px 10px;
+  border-radius: 20px;
+}
+.result-container {
+  display: flex;
+}
+.result-child {
+  margin-left: 10px !important;
+  margin-right: 7px !important;
+
 }

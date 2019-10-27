@@ -8,6 +8,7 @@ import RestaurantPoll from "./RestaurantPoll";
 import EventCreator from "./EventCreator";
 import Vote from "./Vote";
 import EventSearch from "./EventSearch"
+import Result from "./Result"
 
 const HomePage = () => (
   <div>
@@ -37,13 +38,19 @@ const DefaultVote = () => (
     <EventSearch/>
   </div>
 );
+const ResultPage = () => (
+  <div>
+    <App/>
+    <Result/>
+  </div>
+);
 const routes = (
   <BrowserRouter>
     <Switch>
       <Route path="/" component = {HomePage} exact = {true}/>
       <Route path="/vote" component = {DefaultVote} exact = {true}/>
-
       <Route path="/vote/:id" component = {VotePage}/>
+      <Route path="/results" component = {ResultPage}/>
       <Route component = {NotFoundPage}/>
     </Switch>
   </BrowserRouter>

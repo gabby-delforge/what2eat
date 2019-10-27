@@ -13,10 +13,11 @@ export default function App() {
     <div className="App">
       <AppBar position="static" className="navbar">
       <Toolbar>
-
+      <Button color="inherit" component = {NavLink} to = "/">
         <Typography variant="h6" className="navbar-text">
           what2eat
         </Typography>
+        </Button>
 
           <Button color="inherit" component = {NavLink} to = "/">
             About
