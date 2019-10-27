@@ -36,7 +36,7 @@ const VotePage = props => {
 const NotFoundPage = () => (
   <div>
     <App />
-    404!
+    {HomePage}
   </div>
 );
 const DefaultVote = () => (
