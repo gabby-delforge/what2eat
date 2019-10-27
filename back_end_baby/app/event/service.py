@@ -131,7 +131,7 @@ class Service():
 
 
 serviceObj = Service()
-print(serviceObj.sess.)
+
 
 
 print("All events", serviceObj.sess.execute("Select id, name from events").fetchall())
