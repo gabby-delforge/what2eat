@@ -18,24 +18,31 @@ export default class UserLogin extends Component {
   };
   render() {
     return (
-      <Paper className="login-container">
-        <TextField
-          id="standard-name"
-          label="Enter your name"
-          value={this.state.userName}
-          onChange={this.handleNameChange}
-          margin="normal"
-          variant="outlined"
-
-        />
-        <Button
-          id="outlined-name"
-          variant="contained"
-          color="primary"
-          onClick={() => this.props.onLogin("mary")}
+      <Paper className="create-event">
+        <form
+          onSubmit={() => this.props.onLogin(this.state.userName)}
+          className="create-event-field"
+          noValidate
+          autoComplete="off"
         >
-          Login bitch
-        </Button>
+          <TextField
+            fullWidth
+            id="standard-uncontrolled"
+            label="Enter your name:"
+            margin="normal"
+            onChange={this.handleNameChange}
+          />
+
+          <Button
+            type="button"
+            variant="contained"
+            color="primary"
+            className="create-event-submit"
+            onClick={() => this.props.onLogin(this.state.userName)}
+          >
+            Go
+          </Button>
+        </form>
       </Paper>
     );
   }

@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import RestaurantPoll from "./RestaurantPoll";
 import EventCreator from "./EventCreator";
 import Vote from "./Vote";
+import EventSearch from "./EventSearch"
 
 const HomePage = () => (
   <div>
@@ -16,10 +17,11 @@ const HomePage = () => (
 );
 const VotePage = props => {
   console.log(props.match.params);
+  const eventID = props.match.params.id;
   return (
     <div>
       <App />
-      <Vote />
+      <Vote eventID={eventID}/>
     </div>
   );
 };
@@ -29,12 +31,20 @@ const NotFoundPage = () => (
     404!
   </div>
 );
+const DefaultVote = () => (
+  <div>
+    <App/>
+    <EventSearch/>
+  </div>
+);
 const routes = (
   <BrowserRouter>
     <Switch>
-      <Route path="/" component={HomePage} exact={true} />
-      <Route path="/vote/:id" component={VotePage} />
-      <Route component={NotFoundPage} />
+      <Route path="/" component = {HomePage} exact = {true}/>
+      <Route path="/vote" component = {DefaultVote} exact = {true}/>
+
+      <Route path="/vote/:id" component = {VotePage}/>
+      <Route component = {NotFoundPage}/>
     </Switch>
   </BrowserRouter>
 );

@@ -34,60 +34,18 @@ import ListItemText from "@material-ui/core/ListItemText";
 import * as API from "./api/Api";
 
 export default class RestaurantPoll extends Component {
-    
+
   constructor(props) {
     super(props);
     this.handleOpenForm = this.handleOpenForm.bind(this);
     this.handleCloseForm = this.handleCloseForm.bind(this);
   }
+
   state = {
     addFormOpen: false,
     searchResults: [],
-
-    cardData: [
-      {
-        id: 0,
-        avi:
-          "https://upload.wikimedia.org/wikipedia/en/thumb/8/85/Panda_Express_logo.svg/1200px-Panda_Express_logo.svg.png",
-        img:
-          "https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG",
-        photos: [
-          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
-          "https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_4x3_992.jpg",
-          "http://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2Fa4be5dc2-59ed-11e8-9e86-99299e0f1a1c.jpg?crop=1909%2C1074%2C51%2C399&resize=685"
-        ],
-        title: "Panda Express",
-        description:
-          "Panda Express is a fast food restaurant chain which serves American Chinese cuisine. With over 2,200 locations, it is the largest Asian segment restaurant chain in the United States, where it was founded and is mainly located.",
-        more_info: "Pandas are large.",
-        tags: ["Chinese", "Black and white"],
-        open: false,
-        rating: 3,
-        dollar_signs: 1,
-        location: "North Berkeley",
-        selected: false
-      },
-      {
-        id: 1,
-        avi: "http://www.topdoghotdogs.com/images/logo_black_header.png",
-        img:
-          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
-        photos: [
-          "https://dcewboipbvgi2.cloudfront.net/sites/default/files/styles/article_hero_image/public/Puppy_Dog_Labrador_Jerry.jpg?itok=XGobf9k7",
-          "https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_4x3_992.jpg",
-          "http://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2Fa4be5dc2-59ed-11e8-9e86-99299e0f1a1c.jpg?crop=1909%2C1074%2C51%2C399&resize=685"
-        ],
-        title: "Top Dog",
-        description: "top dog grew out of a boys love for sausage",
-        more_info: "This dog is pretty good.",
-        tags: ["Fast Food", "Fluffy"],
-        open: false,
-        rating: 5,
-        dollar_signs: 2,
-        location: "Downtown Berkeley",
-        selected: false
-      }
-    ]
+    cardData: this.props.restaurants,
+    eventInfo: this.props.eventInfo,
   };
 
   handleFavoriteClick = card => {
@@ -107,6 +65,7 @@ export default class RestaurantPoll extends Component {
   handleCloseForm() {
     this.setState({ addFormOpen: false });
   }
+
   handleSearch = () => {
     let results = API.search_restaurant("Burger King", "Berkeley");
     let placeholder_results = this.state.cardData;
@@ -125,6 +84,7 @@ export default class RestaurantPoll extends Component {
     this.setState({ cardData: newCardData });
   };
   render() {
+      console.log(this.state.cardData);
     let listSearchResults;
     if (this.state.searchResults) {
       listSearchResults = (
