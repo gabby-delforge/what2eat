@@ -39,6 +39,7 @@ export async function create_event(
 
 //VOTE_RESTAURANT
 export async function vote_restaurant(_eventID, _yelpID, _userID) {
+  return;
   const response = await fetch("example.com/vote_restaurant", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

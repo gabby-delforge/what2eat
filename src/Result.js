@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import * as API from "./api/Api";
 import { NavLink, Redirect } from "react-router-dom";
 
-export default class EventSearch extends Component {
+export default class Result extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,12 +16,11 @@ export default class EventSearch extends Component {
     };
   }
 
-  // Uncomment once props contains eventID
-  // componentDidMount() {
-  //   API.get_vote_results(this.props.eventID).then(voteResults =>
-  //     this.setState({ results: voteResults })
-  //   );
-  // }
+  componentDidMount() {
+    API.get_vote_results(this.props.eventID).then(voteResults =>
+      this.setState({ results: voteResults })
+    );
+  }
 
   normalize_value = value => {
     let max = 0;
@@ -40,13 +39,22 @@ export default class EventSearch extends Component {
     return ((value - min) * 100) / (max - min);
   };
 
+  getRestaurantName = (id) => {
+    for (let i = 0; i < this.props.restaurants.length; i++) {
+      if (this.props.restaurants[i].yelpID === id) {
+        return this.props.restaurants[i].name;
+      }
+    }
+    return "";
+  }
+
   render() {
     return (
-      <Paper className="create-event">
+      <div className="results">
         {Object.keys(this.state.results).map(item => (
           <div className="result-container">
-            <Typography variant="h6" className="result-child">
-              {item}
+            <Typography variant="h8" className="result-child">
+              {this.getRestaurantName(item)}
             </Typography>
             <LinearProgress
               variant="determinate"
@@ -57,7 +65,7 @@ export default class EventSearch extends Component {
             <br />
           </div>
         ))}
-      </Paper>
+      </div>
     );
   }
 }

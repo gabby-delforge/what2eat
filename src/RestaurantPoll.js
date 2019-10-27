@@ -47,7 +47,6 @@ export default class RestaurantPoll extends Component {
     addFormOpen: false,
     searchResults: [],
     cardData: this.props.restaurants,
-    eventInfo: this.props.eventInfo,
     submitted: false,
     resultsFormOpen: false,
     selectedOne : false,
@@ -71,6 +70,14 @@ export default class RestaurantPoll extends Component {
     this.setState({ addFormOpen: false });
   }
   handleSubmit = () => {
+      let selectedCard = {};
+      for (let i = 0; i < this.state.cardData.length; i++) {
+          if (this.state.cardData[i].selected) {
+              selectedCard = this.state.cardData[i];
+              break;
+          }
+      }
+    API.vote_restaurant(this.props.eventID, selectedCard.yelpID, this.props.userID)
     let newCards = this.state.cardData.slice();
     let favorite = false
     newCards.map(item => {
@@ -156,6 +163,7 @@ export default class RestaurantPoll extends Component {
         <br />
         <Button
           variant="contained"
+          size="large"
           color="secondary"
           onClick={this.handleOpenForm}
           className = "add-icon"
@@ -190,6 +198,7 @@ export default class RestaurantPoll extends Component {
           <Button
             variant = "contained"
             color="Primary"
+            size="large"
             onClick={this.handleSubmit}
             className = "submit-button">
             Vote!
@@ -199,6 +208,7 @@ export default class RestaurantPoll extends Component {
           disabled
           variant = "contained"
           color="Primary"
+          size="large"
           onClick={this.handleSubmit}
           className = "submit-button">
             Vote!
@@ -209,6 +219,7 @@ export default class RestaurantPoll extends Component {
           ?
           <Button
             variant = "contained"
+            size="large"
             color="Primary"
             onClick={this.handleViewResults}
             className = "view-button">
@@ -218,6 +229,7 @@ export default class RestaurantPoll extends Component {
         <Button
           disabled
           variant = "contained"
+          size="large"
           color="Primary"
           onClick={this.handleViewResults}
           className = "view-button">
@@ -230,10 +242,10 @@ export default class RestaurantPoll extends Component {
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">
-            Let's See How Everyone Voted
+           Here are the votes so far:
           </DialogTitle>
-          <DialogContent>
-            <Result/>
+          <DialogContent className="result-content">
+            <Result eventID={this.props.eventInfo.eventID} restaurants={this.state.cardData}/>
           </DialogContent>
         </Dialog>
 

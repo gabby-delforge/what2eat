@@ -1,3 +1,11 @@
+/* COLOR PALETTE:
+#F8E9A1: LIGHT YELLOW
+#F76C6C: BRIGHT SALMON
+#A8D0E6: PALE BLUE
+#374785: MEDIUM BLUE
+#24305E: DARK BLUE
+*/
+
 .App {
   text-align: center;
   background: "#87b9e8";
@@ -23,11 +31,7 @@
   color: #09d3ac;
 }
 
-.navbar {
-  color: #87b9e8;
-  background: #87b9e8;
-  background-color: #87b9e8;
-}
+
 
 .create-event {
   margin: auto;
@@ -41,14 +45,14 @@
 }
 
 .create-event-header-container {
-  background: #cccccc;
-  height: 10vh;
+  background: #F76C6C;
+  height: 20vh;
 
 }
 .create-event-header {
-  font-family: 'Staatliches' !important;
+  font-family: 'Roboto Condensed', sans-serif !important;
   font-size: 2em !important;
-  margin-left: 10% !important;
+  margin: 20px  0 0 10% !important;
 }
 
 .create-event-field {
@@ -69,12 +73,14 @@
   height: 60px;
   text-align: left;
   margin-bottom: 30px;
-  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)
+  background: linear-gradient(45deg, #24305E 30%, #374785 90%)
 }
+
 .navbar-text {
   padding: 10px 10px;
   font-family: 'Staatliches', cursive !important;
   font-size: 3em !important;
+  color: #F8E9A1 !important;
 }
 
 .navbar-button {
@@ -83,13 +89,15 @@
 
 .burger {
   margin-bottom: 5px;
-}
-.restaurant-grid {
-  margin: 3vm;
+  color: #F76C6C;
 }
 
+.restaurant-grid {
+  width: 99% !important;
+  margin: auto !important;
+}
 .restaurant-card-fav {
-  border: 4px solid #b7e9ed
+  border: 4px solid #F76C6C;
 }
 .restaurant-card-reg {
   margin: 4px;
@@ -175,6 +183,7 @@
   width: 80%;
   padding: 5%;
 }
+
 .progress-bar {
   height: 10px !important;
   width: 80%;
@@ -183,11 +192,27 @@
 }
 .result-container {
   display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
 }
 .result-child {
+  text-align: right;
   margin-left: 10px !important;
   margin-right: 7px !important;
+  width: 20% !important;
+  flex-grow: 1;
 }
+
+.results-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.results  {
+  margin: auto;
+  width: 80%;
+}
+
 .submit-button {
   position: fixed !important;
   bottom: 10px;
@@ -204,3 +229,10 @@
   left: 20px;
   margin-bottom: 10px;
 }
+
+.MuiDialog-paperWidthSm {
+  max-width: 55% !important;
+  width: 55% !important;
+  max-height: 80vh;
+}
+

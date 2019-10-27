@@ -34,7 +34,7 @@ export default class Vote extends Component {
                   eventInfoResponse => {
                     console.log(eventInfoResponse);
                     this.setState(
-                      { eventInfo: eventInfoResponse.eventInfo },
+                      { eventInfo: eventInfoResponse },
                       () => {
                         this.setState({ loggedIn: true });
                       }
@@ -56,6 +56,8 @@ export default class Vote extends Component {
           <RestaurantPoll
             restaurants={this.state.restaurants}
             eventInfo={this.state.eventInfo}
+            eventID={this.props.eventID}
+            userID={this.state.userID}
           />
         ) : (
           <UserLogin onLogin={this.onLogin} />
