@@ -162,8 +162,17 @@
 }
 .submit-button {
   position: fixed !important;
-  bottom: 0px;
-  right: 0px;
-  margin-left: 80% !important;
-  margin-right: 10% !important
+  bottom: 10px;
+  right: 100px;
+}
+.view-button {
+  position: fixed !important;
+  bottom: 10px;
+  right: 20px;
+}
+.add-icon {
+  position: fixed !important;
+  bottom: 10px;
+  left: 20px;
+  margin-bottom: 10px;
 }

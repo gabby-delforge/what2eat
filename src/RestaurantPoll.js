@@ -17,6 +17,7 @@ import Box from "@material-ui/core/Box";
 import AttachMoneyRoundedIcon from "@material-ui/icons/AttachMoneyRounded";
 import Rating from "@material-ui/lab/Rating";
 import AddLocationIcon from "@material-ui/icons/AddLocation";
+import EqualizerIcon from '@material-ui/icons/Equalizer';
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
@@ -60,7 +61,7 @@ export default class RestaurantPoll extends Component {
       return (item.selected = false);
     });
     newCards[idx].selected = !old_val;
-    this.setState({ cardData: newCards,  selectedOne: !this.state.selectedOne});
+    this.setState({ cardData: newCards,  selectedOne: !old_val});
   };
 
   handleOpenForm() {
@@ -154,9 +155,10 @@ export default class RestaurantPoll extends Component {
         </Grid>
         <br />
         <Button
-          variant="outlined"
+          variant="contained"
           color="secondary"
           onClick={this.handleOpenForm}
+          className = "add-icon"
         >
           <AddIcon />
         </Button>
@@ -190,7 +192,7 @@ export default class RestaurantPoll extends Component {
             color="Primary"
             onClick={this.handleSubmit}
             className = "submit-button">
-            Submit!
+            Vote!
           </Button>
         :
         <Button
@@ -199,7 +201,7 @@ export default class RestaurantPoll extends Component {
           color="Primary"
           onClick={this.handleSubmit}
           className = "submit-button">
-            Submit!
+            Vote!
         </Button>
         }
         {
@@ -209,8 +211,8 @@ export default class RestaurantPoll extends Component {
             variant = "contained"
             color="Primary"
             onClick={this.handleViewResults}
-            >
-              View Results
+            className = "view-button">
+            <EqualizerIcon/>
           </Button>
         :
         <Button
@@ -218,8 +220,8 @@ export default class RestaurantPoll extends Component {
           variant = "contained"
           color="Primary"
           onClick={this.handleViewResults}
-          >
-            View Results
+          className = "view-button">
+            <EqualizerIcon/>
         </Button>
         }
         <Dialog
