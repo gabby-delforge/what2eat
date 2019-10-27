@@ -32,20 +32,20 @@
 }
 
 
-
 .create-event {
   margin: auto;
   display: flex;
   justify-content: flex-start;
   width: 40%;
   height: 80vh;
+  min-height: 500px;
 
   flex-direction: column;
 }
 
 .create-event-header-container {
   background: #F76C6C;
-  height: 20vh;
+  height: 65px;
 
 }
 .create-event-header {

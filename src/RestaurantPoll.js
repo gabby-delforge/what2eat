@@ -45,6 +45,7 @@ export default class RestaurantPoll extends Component {
 
   state = {
     addFormOpen: false,
+    searchString: "",
     searchResults: [],
     cardData: this.props.restaurants,
     submitted: false,
@@ -98,14 +99,20 @@ export default class RestaurantPoll extends Component {
     this.setState({resultsFormOpen : false})
   }
   handleSearch = () => {
-    let results = API.search_restaurant("Burger King", "Berkeley");
-    let placeholder_results = this.state.cardData;
-    this.setState({ searchResults: placeholder_results });
+    API.search_restaurant(this.state.searchString, "Berkeley").then((apiResponse)=>{
+        console.log(apiResponse);
+        this.setState({ searchResults: apiResponse.restaurants });
+    });
+    
   };
+
+  updateSearch = (event) => {
+    this.setState({searchString: event.target.value})
+  }
 
   handleAddRestaurant = newRestaurant => {
     for (let i = 0; i < this.state.cardData.length; i++) {
-      if (this.state.cardData[i].id === newRestaurant.id) {
+      if (this.state.cardData[i].yelpID === newRestaurant.yelpID) {
         console.log("User tried adding a restaurant that already existed");
         return;
       }
@@ -113,9 +120,11 @@ export default class RestaurantPoll extends Component {
     let newCardData = this.state.cardData.slice();
     newCardData.push(newRestaurant);
     this.setState({ cardData: newCardData });
+    API.add_restaurant(newRestaurant.yelpID, this.props.eventID);
   };
+
+
   render() {
-      console.log(this.state.cardData);
     let listSearchResults;
     if (this.state.searchResults) {
       listSearchResults = (
@@ -123,7 +132,7 @@ export default class RestaurantPoll extends Component {
           {this.state.searchResults.map(result => {
             return (
               <ListItem button>
-                <ListItemText primary={result.title} />
+                <ListItemText primary={result.name} />
                 <Button
                   variant="outlined"
                   color="secondary"
@@ -183,7 +192,7 @@ export default class RestaurantPoll extends Component {
               To add a restuarant to your group's party please search for the
               name below:
             </DialogContentText>
-            <TextField autoFocus margin="dense" id="name" fullWidth />
+            <TextField autoFocus margin="dense" id="name" fullWidth onChange={this.updateSearch} />
             {this.state.searchResults ? listSearchResults : <span />}
           </DialogContent>
           <DialogActions>

@@ -39,7 +39,6 @@ export async function create_event(
 
 //VOTE_RESTAURANT
 export async function vote_restaurant(_eventID, _yelpID, _userID) {
-  return;
   const response = await fetch("https://what2eat2019.herokuapp.com/vote_restaurant", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -160,7 +159,7 @@ export async function add_restaurant(_yelpID, _eventID) {
   const response = await fetch("https://what2eat2019.herokuapp.com/add_restaurant", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ yelpID: _yelpID, eventID: _eventID })
+    body: JSON.stringify({ YelpID: _yelpID, eventID: _eventID })
   });
   let resp = await response.json();
   return resp;
